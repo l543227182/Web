@@ -1,0 +1,95 @@
+package cn.lcstudio.utils;
+
+import java.security.MessageDigest;
+import java.util.UUID;
+
+import cn.lcstudio.bean.Users;
+
+public class ControlerUtils {
+
+	/**
+	 * 
+	 * @Description: TODO
+	 * @param @return   
+	 * @return String  
+	 * @throws
+	 * @author lc
+	 * @date 2016年10月19日 下午10:14:49
+	 */
+	public final static String CreateUUID(){
+		return UUID.randomUUID().toString();
+	}
+    public final static String MD5(String pwd) {
+        //用于加密的字符
+        char md5String[] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+                'A', 'B', 'C', 'D', 'E', 'F' };
+        try {
+            //使用平台的默认字符集将此 String 编码为 byte序列，并将结果存储到一个新的 byte数组中
+            byte[] btInput = pwd.getBytes();
+             
+            //信息摘要是安全的单向哈希函数，它接收任意大小的数据，并输出固定长度的哈希值。
+            MessageDigest mdInst = MessageDigest.getInstance("MD5");
+             
+            //MessageDigest对象通过使用 update方法处理数据， 使用指定的byte数组更新摘要
+            mdInst.update(btInput);
+             
+            // 摘要更新之后，通过调用digest（）执行哈希计算，获得密文
+            byte[] md = mdInst.digest();
+             
+            // 把密文转换成十六进制的字符串形式
+            int j = md.length;
+            char str[] = new char[j * 2];
+            int k = 0;
+            for (int i = 0; i < j; i++) {   //  i = 0
+                byte byte0 = md[i];  //95
+                str[k++] = md5String[byte0 >>> 4 & 0xf];    //    5 
+                str[k++] = md5String[byte0 & 0xf];   //   F
+            }
+             
+            //返回经过加密后的字符串
+            return new String(str);
+             
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    
+	public static boolean validateUser(Users user) {
+		
+		if(user==null)
+			return false;
+		
+		String username=user.getUsername();
+		String password=user.getPassword();
+		
+		if(username==""||username==null)
+			return false;
+		if(password==""||password==null)
+			return false;
+		
+		return true;
+	}
+	/**
+	 * 
+	 * @Description: TODO
+	 * @param @param user
+	 * @param @return   
+	 * @return boolean  
+	 * @throws
+	 * @author lc
+	 * @date 2016年10月19日 下午10:14:58
+	 */
+	public static boolean validateRegUser(Users user) {
+		// TODO Auto-generated method stub
+		if(!validateUser(user)){
+			return false;
+		}
+		if(user.getEmail()==null||user.getEmail()=="")
+			return false;
+		if(user.getRealname()==null||user.getRealname()=="")
+			return false;		
+			return true;
+	}
+}
+
+

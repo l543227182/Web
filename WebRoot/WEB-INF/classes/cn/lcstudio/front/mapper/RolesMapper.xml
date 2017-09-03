@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.lcstudio.front.mapper.RolesDao">
+	 
+	  <select id="getAllRoles" resultType="roles">
+	    select *from roles
+	  </select>
+	  <select id="getRolesByID" resultType="roles" parameterType="integer">
+	    select *from roles where ID =#{ID}
+	  </select>
+	  <insert id="AddRoles" parameterType="roles">
+	    insert into roles values(#{ID},#{NAME},#{PID},#{REMARK})
+	  </insert>
+	  <insert id="delRoles" parameterType="integer">
+	    delete from roles where ID in 
+	    <foreach collection="array" open="(" close=")" item="ID"  separator=",">
+	     #{ID}
+	    </foreach>
+	  </insert>
+	  <update id="modifyRoles" parameterType="roles">
+	   update roles
+	   <set>
+	     <trim suffixOverrides=",">
+	       <if test="NAME!=null and NAME!=''">
+	          NAME=#{NAME},
+	       </if>
+	       <if test="REMARK!=null and REMARK !=''">
+	          REMARK=#{REMARK},
+	       </if>
+	       <if test="PID!=null">
+	         PID=#{PID},
+	       </if>
+	     </trim>
+	    </set>
+	    where ID=#{ID}
+	  </update>
+</mapper>

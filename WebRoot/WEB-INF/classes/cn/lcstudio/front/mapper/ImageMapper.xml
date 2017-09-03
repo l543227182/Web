@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.lcstudio.front.mapper.ImageDao">
+	
+	<select id="getHeadPhoto" parameterType="String">
+	  select *from UserImage where UserID = #{UserID}
+	</select>
+	
+	<delete id="deleteImageById" parameterType="string">
+	  delete UserImage where id =#{id}
+	</delete>
+	
+	<delete id="deleteImageByUserID" parameterType="string">
+	  delete UserImage where UserID =#{UserID}
+	</delete>
+	
+	<update id="updateHeadPhoto" parameterType="userimage">
+	 update userimage  set  path = #{path} 
+	 where  UserID=#{UserID}
+	</update>
+	
+	<insert id="insertImage"  parameterType="userimage">
+	 insert into userimage values(#{id},#{UserID},#{path})
+	</insert>
+	
+</mapper>
+

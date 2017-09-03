@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.lcstudio.front.mapper.IteyeBeanDao">
+		<select id="getAllID"  resultType="String">
+				select id from iteyebean;
+		</select>
+		
+		<select id="getAllBean"  resultType="iteyebean">
+		select title,summary, author ,id from iteyebean;
+		</select>
+	
+		<insert id="addBean" parameterType="iteyebean" >
+			<selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+				SELECT LAST_INSERT_ID() 
+			</selectKey>
+			insert into  iteyebean(title,body,author,srcUrl,date,summary,viewtimes) values
+								(#{title},#{body},#{author},#{srcUrl},#{date},#{summary},#{viewtimes});
+		</insert>
+		<select id="getBeanByID" parameterType="string" resultType="iteyebean">
+			select *from iteyebean where id =#{id}
+		</select>
+		<select id="getCount" resultType="int">
+			select count(*) from iteyebean
+		</select>
+		
+		<select id="getListBean" resultType="iteyebean" parameterType="iteyebean">
+			select id,title, author,date,summary from 
+			iteyebean order by date  desc
+			limit #{startRow},#{pageSize}
+		</select>
+		
+		<select id="getListBeanBack" resultType="iteyebean" parameterType="iteyebean">
+			select id,title, author,date,srcUrl from 
+			iteyebean order by id ASC 
+			limit #{startRow},#{pageSize}
+		</select>
+		<delete id="delBeans" parameterType="string">
+			delete  from iteyebean  where id in
+			<foreach collection="array" close=")" open="(" item="id">
+			 #{id}
+			</foreach>
+		</delete>
+</mapper>
+

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.lcstudio.front.mapper.NoticeDao">
+		<select id="addNotice" parameterType="notice">
+			insert into notice values
+				(#{id},#{title},#{content},#{time},#{author},#{open},#{UserID});
+		</select>
+		<select id="GetNoticeList" parameterType="notice" resultType="notice">
+			select *from notice where UserID = #{UserID} order by time limit #{startRow},#{pageSize} 			
+		</select>
+		<select id="GetNoticeListByAdmin" parameterType="notice" resultType="notice">
+			select *from notice  order by time limit #{startRow},#{pageSize} 			
+		</select>
+		<select id="getOpenNotice" resultType="notice">
+		  select *from notice where open=1
+		</select>
+		<select id="GetNoticeCount" resultType="int" >
+			select count(*) from notice
+		</select>
+		<select id="GetNoticeCountByUserID" resultType="int" parameterType="String" >
+			select count(*) from notice where UserID=#{UserID}
+		</select>
+		<select id="GetNoticeByID" resultType="notice" parameterType="String">
+			select *from notice where id=#{id}
+		</select>
+	
+		
+		<delete id="delNotice" parameterType="String">
+			delete from notice where id in
+			<foreach collection="array" close=")" open="(" item="id" separator=",">
+			 	#{id}
+			</foreach>					
+		</delete>
+			
+		<update id="updateNotice" parameterType="notice">
+			update notice 	
+				<set>
+					<trim suffixOverrides=",">
+						<if test=" title !=null and title != ''">
+						   title = #{title},
+						</if>
+						<if test=" content !=null and content != ''">
+						   content = #{content},
+						</if>
+						<if test=" time !=null and time != ''">
+						   time = #{time},
+						</if>
+						<if test=" author !=null and author != ''">
+						   author = #{author},
+						</if>
+						<if test=" open !=null and open != ''">
+						   open = #{open},
+						</if>
+					</trim>
+				</set>
+				<where>
+						id=#{id}
+				</where>
+		</update>
+		
+		<update id="updateOpenTofalse">
+		update notice set open =0;
+		</update>
+</mapper> 
+

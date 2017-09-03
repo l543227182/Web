@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.lcstudio.front.mapper.UsersDao">
+	
+	<resultMap type="cn.lcstudio.bean.Users" id="userMap">
+	  <id property="id" column="id" />
+	  <result property="realname" column="realname"/>
+	  <result property="username" column="username"/>
+	  <result property="password" column="password"/>
+	  <result property="gender" column="gender"/>
+	  <result property="email" column="email"/>
+	  <result property="ROLEID" column="ROLEID"/>
+	  <result property="remark" column="remark"/>
+	  <result property="regDate" column="regDate"/>
+	  <result property="PID" column="PID"/>
+	    <result property="NAME" column="NAME"/>
+	  <association property="image" javaType="cn.lcstudio.bean.UserImage">
+	   <result property="id"  column="id"/>
+	   <result property="path" column="path"/>
+	   <result property="UserID" column="UserID"/>
+	  </association>
+	</resultMap>
+	
+	<select id="loginUser" parameterType="users" resultMap="userMap">
+  	select *from users ,userimage,roles where
+    	username=#{username} 
+    	and password = #{password} 
+    	 and userimage.UserID=users.id
+    	  and roles.ID=users.ROLEID
+	</select>
+	
+	<select id="getCount" resultType="int">
+	 select count(*) from users	 
+	</select>
+	 
+	 <select id="getPageList" parameterType="Users" resultMap="userMap">
+	  select  users.*,roles.NAME  from users,roles 
+	  where roles.ID = users.ROLEID 	  
+	  order by regDate  limit #{startRow},#{pageSize}
+	 </select>
+	 
+	 <select id="getUser" parameterType="string" resultMap="userMap">
+	   select *from users ,userimage,roles where username = #{LOGIN_NAME} 
+	   and userimage.UserID=users.id
+	   and roles.ID=users.ROLEID
+	 </select>
+	 
+	<select id="getUserByID" parameterType="string" resultMap="userMap">
+	   select *from users ,userimage ,roles where users.id = #{ID} 
+	   and userimage.UserID=users.id
+	   and roles.ID=users.ROLEID
+	</select>
+	 
+	<delete id="deleteUser" parameterType="string">
+	  delete from users where id in 
+	  <foreach collection="array" item="ID" open="(" close=")" separator=",">
+	  	#{ID}
+ 	  </foreach>
+	</delete>
+	
+	<update id="updateUser" parameterType="Users">
+	 update users 
+	 <set> 
+	 <trim suffixOverrides=",">
+	 	
+	     <if test="realname !=null and realname!=''">
+	      realname=#{realname},
+	    </if>	    
+	    <if test="username !=null and username!=''">
+	      username=#{username},
+	    </if>
+	    
+	     <if test="password !=null and username !=''">
+	       password= #{password},
+	    </if>
+	     <if test="email !=null and email != ''">
+	       email=#{email},
+	    </if>
+	     <if test="gender !=null and gender !=''">
+	       gender=#{gender},
+	    </if>
+	    <if test="regDate !=null and regDate !=''">
+	         regDate=#{regDate},
+	    </if>    
+	      <if test="remark !=null and remark != ''">
+	       remark= #{remark},
+	    </if>
+	      <if test="ROLEID !=null and ROLEID != ''">
+	        ROLEID=#{ROLEID},
+	    </if>
+	 </trim>
+	 </set>
+	   where id=#{id}
+	 </update>
+	 
+	<insert id="addUser" parameterType="users">
+		insert into users values(#{id},#{realname},#{username},#{password},
+		#{gender},#{email},#{ROLEID},#{regDate},#{remark});
+	</insert>
+</mapper>
+

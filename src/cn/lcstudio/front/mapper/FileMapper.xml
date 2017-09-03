@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.lcstudio.front.mapper.FileDao">
+		
+		<select id="SearchFiles" resultType="fileinfo" parameterType="fileinfo">
+		select *from fileinfo where 
+		UserID =#{UserID} and filename like "%"#{keyWords}"%"   
+		order by createTime desc  limit
+		#{startRow},#{pageSize}
+		</select>
+		
+		
+		<select id="getFilelistById" parameterType="string" resultType="fileinfo">
+			select *from fileinfo where id in 
+			<foreach collection="array" item="id" open="(" close=")" separator=",">
+					#{id}
+			</foreach>
+		</select>
+		
+		
+		<select id="getFileByID" parameterType="string"  resultType="fileinfo">
+			select *from fileInfo where id = #{id}
+		</select>
+		
+		
+		<select id="getFileByUserID" parameterType="fileinfo"  resultType="fileinfo">
+		  select *from fileinfo where UserID = #{UserID}  order by createTime desc  limit
+		  #{startRow},#{pageSize}
+		</select>
+		
+		<select id="getFileByAdmin" parameterType="fileinfo"  resultType="fileinfo">
+		  select fileinfo.* ,users.realname from fileinfo ,users where 
+		  users.id=fileinfo.UserID order by createTime desc  limit
+		  #{startRow},#{pageSize}
+		</select>
+		
+		<select id="getFileAtFront" parameterType="fileinfo"  resultType="fileinfo">
+		  select fileinfo.* ,users.realname from fileinfo ,users where 
+		  users.id=fileinfo.UserID and open =1 order by createTime desc  limit
+		  #{startRow},#{pageSize}
+		</select>
+		<delete id="delFilebyUserID" parameterType="string" >
+			delete from fileinfo where 	UserID = #{UserID}			
+		</delete>
+		
+		<delete id="delFilebyID" parameterType="string">
+				delete from fileinfo where 	id = #{id}		
+		</delete>
+		
+		 <insert id="addFile" parameterType="fileinfo" >		
+		 		insert into fileinfo values(#{id},#{filename},#{path},
+		 										#{createTime},#{open},#{UserID},#{size})
+		 </insert>
+		 
+		 <update id="UpdateFile" parameterType="fileinfo">
+		 	update fileinfo 
+		 	<set>
+		 	    <trim suffixOverrides=",">
+		 	        <if test="filename!=null">
+		 	          filename=#{filename},
+		 	        </if>
+		 	        <if test="open!=null">
+		 	        	open = #{open},
+		 	        </if>
+		 	    </trim>
+		 	</set>
+		 		where id = #{id}
+		 </update>
+		 
+		 
+		 <select id="getCountByUser" resultType="int" parameterType="String"> 
+		 	select count(*) from fileinfo where UserID = #{UserID}
+		 </select>
+		 
+		 <select id="getCountBySearch"  resultType="int" parameterType="fileinfo">
+		 		select count(*) from fileinfo where UserID = #{UserID}  and filename like "%"#{keyWords}"%"   
+		 </select>
+		 
+		 <select id="getCountByOpen" resultType="int" >
+		 		select count(*) from fileinfo where open =true 
+		 </select>
+		 
+		  <select id="getCountByAdmin" resultType="int" >
+		 		select count(*) from fileinfo
+		 </select>
+		 
+	
+</mapper>
+

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.lcstudio.front.mapper.UserArticleDao">
+<resultMap type="cn.lcstudio.bean.UserArticle" id="UA">
+	 <id property="id" column="id" />
+	  <result property="realname" column="realname"/>
+	  <result property="username" column="username"/>
+	  <result property="password" column="password"/>
+	  <result property="gender" column="gender"/>
+	  <result property="email" column="email"/>
+	  <result property="ROLEID" column="ROLEID"/>
+	  <result property="remark" column="remark"/>
+	  <result property="regDate" column="regDate"/>
+	  <result property="PID" column="PID"/>
+	  <result property="NAME" column="NAME"/>
+	  <collection property="articles"  ofType="cn.lcstudio.bean.Article" >
+	    <result property="title" column="title"/>
+	    <result property="UserID" column="UserID"/>
+	    <result property="content" column="content"/>
+	    <result property="label" column="lable"/>
+	  </collection>
+</resultMap>
+<select id="getUA" resultMap="UA">
+ select users.* ,title ,UserID,content,lable
+ from users ,articles 
+ where UserID=users.id;
+</select>
+</mapper>
+

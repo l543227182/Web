@@ -1,0 +1,107 @@
+package cn.lcstudio.front.controller;
+
+import java.util.Date;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+
+
+
+
+
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import cn.lcstudio.bean.Users;
+import cn.lcstudio.front.service.UsersService;
+import cn.lcstudio.utils.ControlerUtils;
+
+@Controller
+@RequestMapping("/index")
+public class IndexController {
+	
+	@Autowired
+	private UsersService usersService;
+	
+	@RequestMapping("/loginUser")
+	public String loginUser(Users user,HttpServletRequest request){
+		System.out.println(user);
+		if(ControlerUtils.validateUser(user)){
+			usersService.loginUser(user);
+			user=usersService.getUser(user.getUsername());
+			request.getSession().setAttribute("user", user);
+		}	
+		//记住客户端
+		
+		
+	   //Cookie cookie=new Cookie("user", arg1)
+		return "redirect:/index.do";
+	}
+	
+	
+
+	@RequestMapping("/logoutUser")
+	public String logoutUser(HttpServletRequest request){
+		Users user=(Users)request.getSession().getAttribute("user");
+		if(user!=null)
+			request.getSession().invalidate();
+		return "redirect:/index.do";
+	}
+	
+	/**
+	 * 
+	 * @Description: TODO
+	 * @param @param user
+	 * @param @param request
+	 * @param @return   
+	 * @return String  
+	 * @throws
+	 * @author lc
+	 * @date 2016年10月19日 下午10:14:35
+	 */
+	@RequestMapping("/RegisterUser")
+	public String RegisterUser(Users user,HttpServletRequest request){
+		
+		System.out.println("注册的新用户:"+user.getPassword());
+		
+		if(ControlerUtils.validateRegUser(user)){
+		user.setId(ControlerUtils.CreateUUID());
+		user.setPassword(ControlerUtils.MD5(user.getPassword()));
+		user.setRegDate(new Date());
+		user.setROLEID("1");
+		usersService.addUser(user);
+		request.getSession().setAttribute("user", user);		
+		}	
+		
+		return "redirect:/index.do";
+	}
+	
+
+	@RequestMapping("/UserNameExist")
+	public @ResponseBody String UserNameExist(String loginName,HttpServletResponse response){
+		if(loginName==null||loginName.isEmpty()){
+			return "";
+		}
+		 Users user=usersService.getUser(loginName);
+		 response.setContentType("text/xml;charset=utf-8");  
+	     response.setHeader("Cache-Control", "no-cache");   
+		if(user==null){
+			return "没有被注册";
+		}
+		else{
+			return "用户存在";
+		}	
+	}
+	
+	@RequestMapping
+	public String indexPage(){
+		//System.out.println("index");
+		return "visitor/index";
+	}
+}

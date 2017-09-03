@@ -1,0 +1,493 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>lc-studio</title>
+
+       <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>   
+    <script type="text/javascript" src="js/base.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+   
+<style type="text/css">
+div.quote_title {
+    font-weight: bold;
+    margin: 5px 0 0 15px;
+    padding: 5px;
+}
+
+
+div.quote_div {
+    background: #fafafa none repeat scroll 0 0;
+    border: 1px solid #ccc;
+    margin: 0 5px 5px 15px;
+    padding: 3px;
+}
+</style>
+  </head>
+  <body style="padding-top: 54px">
+
+  
+
+<nav class="navbar   navbar-default  navbar-fixed-top " role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">lc-studio</a>
+    </div>
+	<p style="color: red;"></p>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="../index.do"><span class="glyphicon glyphicon-home">&nbsp;数据中心</span></a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-eye-open">&nbsp;博客</span></a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-cloud-download">&nbsp;文件下载</span></a></li>
+       <li><a href="#"><span class=" glyphicon glyphicon-book">&nbsp;所有文章</span></a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-hand-right">&nbsp;学习</span><span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">java</a></li>
+            <li><a href="#">c++</a></li>
+            <li><a href="#">python</a></li>
+            <li class="divider"></li>
+            <li><a href="#">java框架</a></li>
+            <li class="divider"></li>
+            <li><a href="#">其他知识</a></li>
+          </ul>
+        </li> 
+          <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-globe">&nbsp;友情链接</span> <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">百度</a></li>
+            <li><a href="#">ITeye</a></li>
+            <li><a href="#">ImportNew</a></li>
+            <li class="divider"></li>
+            <li><a href="#">csdn</a></li>
+            <li><a href="#">微博</a></li>
+            <li><a href="#">旧站</a></li>
+          </ul>
+        </li>     
+      </ul>
+      <div>
+     <ul class="nav navbar-nav navbar-right">
+      <li>
+       <div class="btn-group" >
+				
+				   <ul class="dropdown-menu" role="menu" style="width: 20px; ">
+				      <li><a href="index.do"><span class="glyphicon glyphicon-cog">&nbsp;主页</span></a></li>
+				       <li class="divider"></li>
+				      <li><a href="index/logoutUser.do"><span class="glyphicon glyphicon-send">&nbsp;登出</span></a></li>				    
+				   </ul>
+				</div>
+      </li> 
+      </ul>
+   </div>
+   
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+ 
+
+
+  <div class="container" >     
+ 	<div class="panel panel-primary" >  
+ 	 <div class="panel-heading">    
+ 	  <h3 class="panel-title">文章管理</h3>
+ 	     </div> 
+ 	       <div class="panel-body">   	     
+ 				<div class="well well-lg" >  
+ 			<button type="button" class="btn btn-primary">返回</button>
+ 			
+ 			<h2 align="center">标题</h2>
+ 					
+ 					<address style="text-align: center;">
+ 					<abbr >创建日期:yyyy年MM月dd日hh时
+					
+						&nbsp;&nbsp;&nbsp;作者:&nbsp;啦啦啦啦</abbr>
+						
+					</address>
+ 			<div id="news_content">
+ 			<br>
+ 			<br>
+  	本文来自：
+ 	<a href="http://blog.csdn.net/qicosmos/article/details/52386920" target="_blank">CSDN博客</a> 
+ 	<br />作者：
+ 	<a href="http://my.csdn.net/qicosmos" target="_blank">qicosmos</a> 
+ 	<br /> 
+ 	<br />现在RPC框架很多，但是真正好用的RPC却是少之又少。那么什么是好用的RPC，什么是不好用的RPC呢，有一个评判标准吗？下面是我列举出来的衡量RPC好用与否的几条标准： 
+ 	<br />
+ 	<div class="quote_title">
+  引用
+ </div>
+ <div class="quote_div">
+  真的像本地函数一样调用 
+  <br />使用简单，用户只需要关注业务即可 
+  <br />灵活，RPC调用的序列化方式可以自由定制，比如支持json，支持msgpack等方式
+ </div> 
+ <br />下面来分别解释这几条标准。 
+ <br /> 
+ <br />标准1：真的像本地函数一样调用 
+ <br /> 
+ <br />RPC的本质是为了屏蔽网络的细节和复杂性，提供易用的api，让用户就像调用本地函数一样实现远程调用，所以RPC最重要的就是“像调用本地函数一样”实现远程调用，完全不让用户感知到底层的网络。真正好用的RPC接口，他的调用形式是和本地函数无差别的，但是本地函数调用是灵活多变的。服务器如果提供和客户端完全一致的调用形式将是非常好用的，这也是RPC框架的一个巨大挑战 
+ <br /> 
+ <br />标准2：使用简单，用户只需要关注业务即可 
+ <br /> 
+ <br />RPC的使用简单直接，非常自然，就是和调用本地函数一样，不需要写一大堆额外代码，用户只用写业务逻辑代码，而不用关注框架的细节，其他的事情都由RPC框架完成。 
+ <br /> 
+ <br />标准3：灵活，RPC调用的序列化方式可以自由定制 
+ <br /> 
+ <br />RPC调用的数据格式支持多种编解码方式，比如一些通用的json格式、msgpack格式或者boost.serialization等格式，甚至支持用户自己定义的格式，这样使用起来才会更灵活。 
+ <br /> 
+ <br />
+ <strong>RPC框架评估</strong> 
+ <br /> 
+ <br />下面根据这几个标准来评估一些国内外知名大公司的RPC框架，这些框架的用法在github的wiki中都有使用示例，使用示例代码均来自官方提供的例子。 
+ <br /> 
+ <br />谷歌gRPC 
+ <br /> 
+ <br />gRPC最近发布了1.0版本，他是谷歌公司用c++开发的一个RPC框架，并提供了多种客户端。 
+ <br /> 
+ <br />协议定义 
+ <br />
+ <pre name="code" class="java">
+先定义一个.proto的文件，例如
+
+    // Obtains the feature at a given position.
+    rpc GetFeature(Point) returns (Feature) {}
+定义了一个服务接口，接收客户端传过来的Point，返回一个Feature，接下来定义protocol buffer的消息类型，用于序列化/反序列化
+
+    message Point {
+      int32 latitude = 1;
+      int32 longitude = 2;
+    }
+</pre> 
+ <br />服务器代码 
+ <br />
+ <pre name="code" class="java">
+class RouteGuideImpl final : public RouteGuide::Service {
+    Status GetFeature(ServerContext* context, const Point* point, Feature* feature) override {
+          feature-&gt;set_name(GetFeatureName(*point, feature_list_));
+          feature-&gt;mutable_location()-&gt;CopyFrom(*point);
+          return Status::OK;
+    }
+}
+
+void RunServer(const std::string&amp; db_path) {
+  std::string server_address(&quot;0.0.0.0:50051&quot;);
+  RouteGuideImpl service(db_path);
+
+  ServerBuilder builder;
+  builder.AddListeningPort(server_address, grpc::InsecureServerCredentials());
+  builder.RegisterService(&amp;service);
+  std::unique_ptr&lt;Server&gt; server(builder.BuildAndStart());
+  std::cout &lt;&lt; &quot;Server listening on &quot; &lt;&lt; server_address &lt;&lt; std::endl;
+  server-&gt;Wait();
+}
+</pre> 
+ <br />客户端代码 
+ <br />
+ <pre name="code" class="java">
+bool GetOneFeature(const Point&amp; point, Feature* feature) {
+    ClientContext context;
+    Status status = stub_-&gt;GetFeature(&amp;context, point, feature);
+    if (!status.ok()) {
+      std::cout &lt;&lt; &quot;GetFeature rpc failed.&quot; &lt;&lt; std::endl;
+      return false;
+    }
+    if (!feature-&gt;has_location()) {
+      std::cout &lt;&lt; &quot;Server returns incomplete feature.&quot; &lt;&lt; std::endl;
+      return false;
+    }
+
+    return true;
+}
+</pre> 
+ <br />评价 
+ <br /> 
+ <br />gRPC调用的序列化用的是protocal buffer，RPC服务接口需要在.proto文件中定义，使用稍显繁琐。根据标准1，gRPC并没有完全实现像本地调用一样，虽然很接近了，但做不到，原因是RPC接口中必须带一个Context的参数，并且返回类型必须是Status，这些限制导致gRPC无法做到像本地接口一样调用。 
+ <br />根据标准2，gRPC的使用不算简单，需要关注诸多细节，比如Context和Status等框架的细节。根据标准3，gRPC只支持pb协议，无法扩展支持其他协议。 
+ <br /> 
+ <br />综合评价：70分。 
+ <br /> 
+ <br />
+ <strong>百度sofa-pbRPC</strong> 
+ <br /> 
+ <br />sofa-pbRPC是百度用c++开发的一个RPC框架，和gRPC有点类似，也是基于protocal buffer的，需要定义协议。 
+ <br /> 
+ <br />协议定义 
+ <br />
+ <pre name="code" class="java">
+// 定义请求消息 
+message EchoRequest { 
+required string message = 1; 
+}
+</pre> 
+ <br />
+ <pre name="code" class="java">
+// 定义回应消息
+message EchoResponse {
+    required string message = 1;
+}
+
+// 定义RPC服务，可包含多个方法（这里只列出一个）
+service EchoServer {
+    rpc Echo(EchoRequest) returns(EchoResponse);
+}
+</pre> 
+ <br />服务器端代码 
+ <br />
+ <pre name="code" class="java">
+#include &lt;sofa/pbrpc/pbrpc.h&gt;  // sofa-pbrpc头文件
+#include &quot;echo_service.pb.h&quot;   // service接口定义头文件
+class EchoServerImpl : public sofa::pbrpc::test::EchoServer
+{
+public:
+    EchoServerImpl() {}
+    virtual ~EchoServerImpl() {}
+
+private:
+    virtual void Echo(google::protobuf::RpcController* controller,
+                      const sofa::pbrpc::test::EchoRequest* request,
+                      sofa::pbrpc::test::EchoResponse* response,
+                      google::protobuf::Closure* done)
+    {
+        sofa::pbrpc::RpcController* cntl =
+            static_cast&lt;sofa::pbrpc::RpcController*&gt;(controller);
+        SLOG(NOTICE, &quot;Echo(): request message from %s: %s&quot;,
+            cntl-&gt;RemoteAddress().c_str(), request-&gt;message().c_str());
+        response-&gt;set_message(&quot;echo message: &quot; + request-&gt;message());
+        done-&gt;Run();
+    }
+};
+注意：
+
+服务完成后必须调用done-&gt;Run()，通知RPC系统服务完成，触发发送Response；
+在调了done-&gt;Run()之后，Echo的所有四个参数都不再能访问；
+done-Run()可以分派到其他线程中执行，以实现了真正的异步处理；
+</pre> 
+ <br />客户端代码 
+ <br />
+ <pre name="code" class="java">
+int main()
+{
+    SOFA_PBRPC_SET_LOG_LEVEL(NOTICE);
+
+    // 定义RpcClient对象，管理RPC的所有资源
+    // 通常来说，一个client程序只需要一个RpcClient实例
+    // 可以通过RpcClientOptions指定一些配置参数，譬如线程数、流控等
+    sofa::pbrpc::RpcClientOptions client_options;
+    client_options.work_thread_num = 8;
+    sofa::pbrpc::RpcClient rpc_client(client_options);
+
+    // 定义RpcChannel对象，代表一个消息通道，需传入Server端服务地址
+    sofa::pbrpc::RpcChannel rpc_channel(&amp;rpc_client, &quot;127.0.0.1:12321&quot;);
+
+    // 定义EchoServer服务的桩对象EchoServer_Stub，使用上面定义的消息通道传输数据
+    sofa::pbrpc::test::EchoServer_Stub stub(&amp;rpc_channel);
+
+    // 定义和填充调用方法的请求消息
+    sofa::pbrpc::test::EchoRequest request;
+    request.set_message(&quot;Hello world!&quot;);
+// 可以通过RpcClientOptions指定一些配置参数，譬如线程数、流控等
+    sofa::pbrpc::RpcClientOptions client_options;
+    client_options.work_thread_num = 8;
+    sofa::pbrpc::RpcClient rpc_client(client_options);
+
+    // 定义RpcChannel对象，代表一个消息通道，需传入Server端服务地址
+    sofa::pbrpc::RpcChannel rpc_channel(&amp;rpc_client, &quot;127.0.0.1:12321&quot;);
+
+    // 定义EchoServer服务的桩对象EchoServer_Stub，使用上面定义的消息通道传输数据
+    sofa::pbrpc::test::EchoServer_Stub stub(&amp;rpc_channel);
+
+    // 定义和填充调用方法的请求消息
+    sofa::pbrpc::test::EchoRequest request;
+    request.set_message(&quot;Hello world!&quot;);
+
+    // 定义方法的回应消息，会在调用返回后被填充
+    sofa::pbrpc::test::EchoResponse response;
+
+    // 定义RpcController对象，用于控制本次调用
+    // 可以设置超时时间、压缩方式等；默认超时时间为10秒，默认压缩方式为无压缩
+    sofa::pbrpc::RpcController controller;
+    controller.SetTimeout(3000);
+// 发起调用，最后一个参数为NULL表示为同步调用
+    stub.Echo(&amp;controller, &amp;request, &amp;response, NULL);
+
+    // 调用完成后，检查是否失败
+    if (controller.Failed()) {
+        // 调用失败后的错误处理，譬如可以进行重试
+        SLOG(ERROR, &quot;request failed: %s&quot;, controller.ErrorText().c_str());
+    }
+
+    return EXIT_SUCCESS;
+}
+</pre> 
+ <br />评价 
+ <br /> 
+ <br />sofa-pbRPC的使用并没有像sofa这个名字那样sofa，根据标准1，服务端的RPC接口比gRPC更加复杂，更加远离本地调用了。根据标准2，用户要做很多额外的事，需要关注框架的很多细节，比较难用。根据标准3，同样只支持pb协议，无法支持其他协议。 
+ <br /> 
+ <br />综合评价：62分。 
+ <br /> 
+ <br />
+ <strong>腾讯Pebble</strong> 
+ <br /> 
+ <br />腾讯开源的Pebble也是基于protocal buffer的，不过他的用法比gRPC和sofaRPC更好用，思路都是类似的，先定义协议。 
+ <br /> 
+ <br />协议定义 
+ <br />
+ <pre name="code" class="java">
+struct HeartBeatInfo {
+  1: i64 id,
+  2: i32 version = 1,
+  3: string address,
+  4: optional string comment,
+}
+
+service BaseService {
+
+   i64 heartbeat(1:i64 id, 2:HeartBeatInfo data),
+
+   oneway void log(1: string content)
+
+}
+</pre> 
+ <br />服务器端代码 
+ <br />
+ <pre name="code" class="java">
+class BaseServiceHandler : public BaseServiceCobSvIf {
+public:
+
+    void log(const std::string&amp; content) {
+        std::cout &lt;&lt; &quot;receive request : log(&quot; &lt;&lt; content &lt;&lt; &quot;)&quot; &lt;&lt; std::endl;
+    }
+};
+
+int main(int argc, char* argv[]) {
+    // 初始化RPC
+    pebble::rpc::Rpc* rpc = pebble::rpc::Rpc::Instance();
+    rpc-&gt;Init(&quot;&quot;, 0, &quot;&quot;);
+
+    // 注册服务
+    BaseServiceHandler base_service;
+    rpc-&gt;RegisterService(&amp;base_service);
+
+    // 配置服务监听地址
+    std::string listen_addr(&quot;tcp://127.0.0.1:&quot;);
+    if (argc &gt; 1) {
+        listen_addr.append(argv[1]);
+    } else {
+        listen_addr.append(&quot;8200&quot;);
+    }
+// 添加服务监听地址
+    rpc-&gt;AddServiceManner(listen_addr, pebble::rpc::PROTOCOL_BINARY);
+
+    // 启动server
+    rpc-&gt;Serve();
+
+    return 0;
+}
+</pre> 
+ <br />客户端代码 
+ <br />
+ <pre name="code" class="java">
+// 初始化RPC
+pebble::rpc::Rpc* rpc = pebble::rpc::Rpc::Instance();
+rpc-&gt;Init(&quot;&quot;, -1, &quot;&quot;);
+
+// 创建rpc client stub
+BaseServiceClient client(service_url, pebble::rpc::PROTOCOL_BINARY);
+
+// 同步调用
+int ret = client.log(&quot;pebble simple test : log&quot;);
+std::cout &lt;&lt; &quot;sync call, ret = &quot; &lt;&lt; ret &lt;&lt; std::endl;
+</pre> 
+ <br />评价 
+ <br /> 
+ <br />Pebble比gRPC和sofa-pbrpc更好用，根据标准1，调用方式和本地调用一致了，接口中没有任何限制。根据标准2，除了定义协议稍显繁琐之外已经比较易用了，不过服务器在使用上还是有一些限制，比如注册服务的时候只能注册一个类对象的指针，不能支持lambda表达式，std::function或者普通的function。根据标准3，gRPC只支持pb协议，无法扩展支持其他协议。 
+ <br /> 
+ <br />综合评价：75分。 
+ <br /> 
+ <br />
+ <strong>apache msgpack-RPC</strong> 
+ <br /> 
+ <br />
+ <a href="https://github.com/jubatus/jubatus-msgpack-rpc/tree/master/cpp" target="_blank">msgpack-RPC</a>是基于msgpack定义的RPC框架，不同于基于pb的RPC，他无需定义专门的协议。 
+ <br /> 
+ <br />服务器端代码 
+ <br />
+ <pre name="code" class="java">
+#include &lt;jubatus/msgpack/rpc/server.h&gt;
+
+class myserver : public msgpack::rpc::server::base {
+public:
+    void add(msgpack::rpc::request req, int a1, int a2)
+    {
+        req.result(a1 + a2);
+    }
+
+public:
+    void dispatch(msgpack::rpc::request req)
+    try {
+        std::string method;
+        req.method().convert(&amp;method);
+
+        if(method == &quot;add&quot;) {
+            msgpack::type::tuple&lt;int, int&gt; params;
+            req.params().convert(&amp;params);
+            add(req, params.get&lt;0&gt;(), params.get&lt;1&gt;());
+
+        } else {
+            req.error(msgpack::rpc::NO_METHOD_ERROR);
+        }
+
+    } catch (msgpack::type_error&amp; e) {
+        req.error(msgpack::rpc::ARGUMENT_ERROR);
+        return;
+} catch (std::exception&amp; e) {
+        req.error(std::string(e.what()));
+        return;
+    }
+};
+</pre> 
+ <br />客户端代码 
+ <br />
+ <pre name="code" class="java">
+#include &lt;jubatus/msgpack/rpc/client.h&gt;
+#include &lt;iostream&gt;
+
+int main(void)
+{
+    msgpack::rpc::client c(&quot;127.0.0.1&quot;, 9090);
+    int result = c.call(&quot;add&quot;, 1, 2).get&lt;int&gt;();
+    std::cout &lt;&lt; result &lt;&lt; std::endl;
+}
+</pre> 
+ <br />评价 
+ <br /> 
+ <br />msgpack-RPC使用起来也很简单，不需要定义proto文件，根据标准1，客户端的调用和本地调用一致，不过，服务器的RPC接口有一个msgpack::rpc::request对象，并且也必须派生于base类，使用上有一定的限制。根据标准2，服务器端提供RPC服务的时候需要根据method的名字来dispatch，这种方式不符合开闭原则，使用起来有些不方便。根据标准3，msgpack-rpc只支持msgpack的序列化，不能支持其他的序列化方式。 
+ <br /> 
+ <br />综合评价：80分。 
+ <br /> 
+ <br />
+ <strong>总结</strong> 
+ <br /> 
+ <br />目前虽然国内外各大公司都推出了自己的RPC框架，但是真正好用易用的RPC框架却是不多的，这里对各个厂商的RPC框架仅从好用的角度做一个评价，一家之言，仅供参考，希望可以为大家做RPC的技术选型的时候提供一些评判依据。 
+</div>
+   				</div>
+  		 </div>
+   </div>
+  </div>  
+  </body>
+</html>
+

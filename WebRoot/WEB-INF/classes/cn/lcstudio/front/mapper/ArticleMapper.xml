@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.lcstudio.front.mapper.ArticleDao">
+
+		<select id="InsertAritcle" parameterType="article">
+			insert into articles values
+			(#{id},#{title},#{content},#{label},#{open},#{type},#{UserID},#{CreateTime});
+		</select>
+		
+		<select id="GetCountByUserID" resultType="int" parameterType="String">
+		  select count(*) from articles where UserID = #{UserID}
+		</select>
+		
+		<select id="GetArticleByID" resultType="article" parameterType="String">
+			select articles.*,users.realname author from articles ,users where articles.id=#{id}
+			and users.id = articles.UserID 
+		</select>
+		
+		<select id="GetArticleListByUserID" resultType="article" parameterType="article">
+			select *from articles where UserID=#{UserID} 
+			order by  CreateTime limit #{startRow},#{pageSize}
+		</select>
+		
+		<delete id="DelArticleByID" parameterType="String">
+			delete from articles where id in
+			<foreach collection="array" close=")" open="(" item="id" separator=",">
+			 	#{id}
+			</foreach>
+		</delete>
+		
+		<delete id="DelArticleByUserID" parameterType="String">
+			delete from articles where UserID =#{UserID}
+		</delete>
+		
+		<update id="UpdateArticle" parameterType="article">
+			update articles 	
+				<set>
+					<trim suffixOverrides=",">
+						<if test=" title !=null and title != ''">
+						   title = #{title},
+						</if>
+						<if test=" content !=null and content != ''">
+						   content = #{content},
+						</if>
+						<if test=" label !=null and label != ''">
+						   label = #{label},
+						</if>
+						<if test=" open !=null and open != ''">
+						   open = #{open},
+						</if>
+						<if test=" type !=null and type != ''">
+						   type = #{type},
+						</if>
+						<if test=" CreateTime !=null and CreateTime != ''">
+						   CreateTime = #{CreateTime},
+						</if>
+					</trim>
+				</set>
+				<where>
+						id=#{id}
+				</where>
+		</update>
+		<select id="getFrontArticles" resultType="article" parameterType="article">
+		  select articles.*,users.realname author 
+		  from articles ,users where 
+		  users.id = articles.UserID and open=1
+		  order by  CreateTime 
+		  limit #{startRow},#{pageSize}
+		</select>
+		
+		<select id="getFrontArticleCount" resultType="int" >
+		 select count(*) from articles where open=1
+		</select>
+		
+		<select id="getThelastArticle" resultType="article">
+			 select * from articles 
+			 where open=1 
+			 order by CreateTime desc 
+			 limit 0,6;
+		</select>
+</mapper>
+
