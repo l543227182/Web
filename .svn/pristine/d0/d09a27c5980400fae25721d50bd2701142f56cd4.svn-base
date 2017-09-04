@@ -1,7 +1,0 @@
-driverClass=com.mysql.jdbc.Driver
-
-jdbcUrl=jdbc:mysql://localhost:3306/lc_studio?characterEncoding=UTF-8
-
-user=root
-
-password=luochao
