@@ -1,8 +1,7 @@
 package cn.lcstudio.lucene.Dao;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import cn.lcstudio.bean.IteyeBean;
+import cn.lcstudio.lucene.utils.luceneUtils;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.queryparser.classic.QueryParser;
@@ -13,8 +12,9 @@ import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.search.highlight.Highlighter;
 import org.springframework.stereotype.Service;
 
-import cn.lcstudio.bean.IteyeBean;
-import cn.lcstudio.lucene.utils.luceneUtils;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class luceneDao {

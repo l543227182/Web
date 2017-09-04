@@ -1,23 +1,18 @@
 package cn.lcstudio.admin.controller;
 
-import java.util.HashMap;
-
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-
-import org.springframework.web.bind.annotation.RequestMapping;
-
 import cn.itcast.common.page.Pagination;
 import cn.lcstudio.bean.IteyeBean;
 import cn.lcstudio.front.mapper.IteyeBeanDao;
 import cn.lcstudio.front.service.IteyeBeanService;
 import cn.lcstudio.front.service.StaticPageService;
-
 import cn.lcstudio.utils.privilegeValue;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/admin/data")

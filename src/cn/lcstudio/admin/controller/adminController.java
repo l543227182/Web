@@ -1,14 +1,13 @@
 package cn.lcstudio.admin.controller;
 
 
-import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import cn.lcstudio.bean.UserImage;
+import cn.lcstudio.bean.Users;
+import cn.lcstudio.front.service.ImageService;
+import cn.lcstudio.front.service.UsersService;
+import cn.lcstudio.utils.ResponseUtils;
+import com.sun.jersey.api.client.Client;
+import com.sun.jersey.api.client.WebResource;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Logger;
 import org.json.JSONObject;
@@ -18,15 +17,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import cn.lcstudio.bean.UserImage;
-import cn.lcstudio.bean.Users;
-import cn.lcstudio.front.sercice.impl.UsersServiceImpl;
-import cn.lcstudio.front.service.ImageService;
-import cn.lcstudio.front.service.UsersService;
-import cn.lcstudio.utils.ResponseUtils;
-
-import com.sun.jersey.api.client.Client;
-import com.sun.jersey.api.client.WebResource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @RequestMapping("/admin")
 @Controller

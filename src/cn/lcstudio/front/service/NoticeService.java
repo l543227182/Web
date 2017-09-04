@@ -1,7 +1,6 @@
 package cn.lcstudio.front.service;
 
 import cn.itcast.common.page.Pagination;
-import cn.lcstudio.bean.Article;
 import cn.lcstudio.bean.Notice;
 
 public interface NoticeService {

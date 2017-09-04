@@ -1,13 +1,11 @@
 package cn.lcstudio.front.sercice.impl;
 
+import cn.lcstudio.bean.UserImage;
+import cn.lcstudio.front.mapper.ImageDao;
+import cn.lcstudio.front.service.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import cn.lcstudio.bean.UserImage;
-import cn.lcstudio.bean.Users;
-import cn.lcstudio.front.mapper.ImageDao;
-import cn.lcstudio.front.service.ImageService;
 
 @Transactional
 @Service

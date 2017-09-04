@@ -1,8 +1,7 @@
 package cn.lcstudio.utils;
 
-import java.io.IOException;
-
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 /**
  * 

@@ -1,9 +1,9 @@
 package cn.lcstudio.front.service;
 
-import java.util.List;
-
 import cn.itcast.common.page.Pagination;
 import cn.lcstudio.bean.FileInfo;
+
+import java.util.List;
 
 public interface FileService {
 	public  FileInfo  getFileByID(String id);

@@ -1,9 +1,8 @@
 package cn.lcstudio.utils;
 
-import java.io.IOException;
-
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
+import java.io.IOException;
 
 public class MyIf extends SimpleTagSupport {
 

@@ -1,9 +1,8 @@
 package cn.lcstudio.front.mapper;
 
-import java.util.List;
-
-import cn.lcstudio.bean.UserImage;
 import cn.lcstudio.bean.Users;
+
+import java.util.List;
 
 public interface UsersDao {
 	public void deleteUser(String[] ids);

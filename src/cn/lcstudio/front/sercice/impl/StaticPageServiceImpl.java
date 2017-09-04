@@ -1,19 +1,14 @@
 package cn.lcstudio.front.sercice.impl;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
-import java.util.Map;
-
-import javax.servlet.ServletContext;
-
-import org.springframework.web.context.ServletContextAware;
-import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 
 import cn.lcstudio.front.service.StaticPageService;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
+import org.springframework.web.context.ServletContextAware;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
+
+import javax.servlet.ServletContext;
+import java.io.*;
+import java.util.Map;
 
 
 /**

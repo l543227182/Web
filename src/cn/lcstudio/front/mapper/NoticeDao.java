@@ -1,11 +1,8 @@
 package cn.lcstudio.front.mapper;
 
-import java.util.List;
-
-
-
-import net.sf.ehcache.search.expression.Not;
 import cn.lcstudio.bean.Notice;
+
+import java.util.List;
 
 public interface NoticeDao {
 	

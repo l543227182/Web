@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*"  isELIgnored="false" pageEncoding="UTF-8"%>
+<%@ page language="java" isELIgnored="false" pageEncoding="UTF-8"%>
   
 
 <nav class="navbar   navbar-default  navbar-fixed-top " role="navigation">

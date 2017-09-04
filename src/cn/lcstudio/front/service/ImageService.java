@@ -1,7 +1,6 @@
 package cn.lcstudio.front.service;
 
 import cn.lcstudio.bean.UserImage;
-import cn.lcstudio.bean.Users;
 
 public interface ImageService {
 	public void insertImage(UserImage image);

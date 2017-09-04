@@ -1,16 +1,4 @@
 package cn.lcstudio.test;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.util.List;
-import java.util.UUID;
-
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import cn.lcstudio.bean.IteyeBean;
 import cn.lcstudio.bean.UserArticle;
@@ -21,6 +9,14 @@ import cn.lcstudio.front.service.IteyeBeanService;
 import cn.lcstudio.front.service.UsersService;
 import cn.lcstudio.lucene.Dao.luceneDao;
 import cn.lcstudio.utils.Clawer;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import java.io.IOException;
+import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"classpath:application-context.xml"})

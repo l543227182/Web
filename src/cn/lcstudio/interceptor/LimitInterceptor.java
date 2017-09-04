@@ -1,18 +1,15 @@
 package cn.lcstudio.interceptor;
-import java.lang.reflect.Method;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import cn.lcstudio.bean.Users;
+import cn.lcstudio.front.service.rolesService;
+import cn.lcstudio.utils.privilegeValue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import cn.lcstudio.bean.Roles;
-import cn.lcstudio.bean.Users;
-import cn.lcstudio.front.service.rolesService;
-import cn.lcstudio.utils.privilegeValue;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 public class LimitInterceptor implements HandlerInterceptor{
 

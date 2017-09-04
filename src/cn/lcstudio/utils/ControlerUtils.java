@@ -1,25 +1,19 @@
 package cn.lcstudio.utils;
 
-import java.io.File;
-import java.io.IOException;
-import java.security.MessageDigest;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Random;
-import java.util.UUID;
-
+import cn.lcstudio.bean.IteyeBean;
+import cn.lcstudio.bean.Users;
 import org.apache.log4j.Logger;
 import org.jsoup.Connection;
-import org.jsoup.Jsoup;
 import org.jsoup.Connection.Response;
+import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import cn.lcstudio.admin.controller.adminController;
-import cn.lcstudio.bean.IteyeBean;
-import cn.lcstudio.bean.Users;
+import java.io.File;
+import java.io.IOException;
+import java.security.MessageDigest;
+import java.util.*;
 
 public class ControlerUtils {
 	private static Logger logger = Logger.getLogger(ControlerUtils.class); 

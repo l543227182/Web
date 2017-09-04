@@ -1,21 +1,20 @@
 package cn.lcstudio.task;
 
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import cn.lcstudio.bean.IteyeBean;
+import cn.lcstudio.front.service.IteyeBeanService;
+import cn.lcstudio.front.service.StaticPageService;
+import cn.lcstudio.lucene.Dao.luceneDao;
+import cn.lcstudio.utils.Clawer;
 import org.apache.log4j.Logger;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import cn.lcstudio.bean.IteyeBean;
-import cn.lcstudio.front.service.IteyeBeanService;
-import cn.lcstudio.front.service.StaticPageService;
-import cn.lcstudio.lucene.Dao.luceneDao;
-import cn.lcstudio.utils.Clawer;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 public class TimeTask  implements Job{
 
 	private static Logger logger = Logger.getLogger(TimeTask.class); 

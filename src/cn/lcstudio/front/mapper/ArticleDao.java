@@ -1,8 +1,8 @@
 package cn.lcstudio.front.mapper;
 
-import java.util.List;
-
 import cn.lcstudio.bean.Article;
+
+import java.util.List;
 
 public interface ArticleDao {
 	public void InsertAritcle(Article article);

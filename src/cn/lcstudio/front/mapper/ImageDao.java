@@ -1,7 +1,6 @@
 package cn.lcstudio.front.mapper;
 
 import cn.lcstudio.bean.UserImage;
-import cn.lcstudio.bean.Users;
 
 public interface ImageDao {
 	public void insertImage(UserImage image);

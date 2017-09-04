@@ -1,8 +1,8 @@
 package cn.lcstudio.front.mapper;
 
-import java.util.List;
-
 import cn.lcstudio.bean.IteyeBean;
+
+import java.util.List;
 
 public interface IteyeBeanDao {
 	public Integer addBean(IteyeBean bean);

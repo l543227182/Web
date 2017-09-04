@@ -1,18 +1,12 @@
 package cn.lcstudio.admin.controller;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import cn.itcast.common.page.Pagination;
+import cn.lcstudio.bean.FileInfo;
+import cn.lcstudio.bean.Users;
+import cn.lcstudio.front.service.FileService;
+import cn.lcstudio.utils.ControlerUtils;
+import cn.lcstudio.utils.FileUtils;
+import cn.lcstudio.utils.privilegeValue;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,13 +16,14 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
-import cn.itcast.common.page.Pagination;
-import cn.lcstudio.bean.FileInfo;
-import cn.lcstudio.bean.Users;
-import cn.lcstudio.front.service.FileService;
-import cn.lcstudio.utils.ControlerUtils;
-import cn.lcstudio.utils.FileUtils;
-import cn.lcstudio.utils.privilegeValue;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
 @Controller
 @RequestMapping("/admin/file")

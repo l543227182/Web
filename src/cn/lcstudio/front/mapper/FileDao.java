@@ -1,10 +1,8 @@
 package cn.lcstudio.front.mapper;
 
-import java.io.File;
-import java.util.List;
-
-import cn.itcast.common.page.Pagination;
 import cn.lcstudio.bean.FileInfo;
+
+import java.util.List;
 
 public interface FileDao {
 	public  FileInfo  getFileByID(String id);

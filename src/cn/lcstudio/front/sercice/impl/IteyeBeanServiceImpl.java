@@ -1,13 +1,12 @@
 package cn.lcstudio.front.sercice.impl;
 
-import javax.annotation.Resource;
-
-import org.springframework.stereotype.Service;
-
 import cn.itcast.common.page.Pagination;
 import cn.lcstudio.bean.IteyeBean;
 import cn.lcstudio.front.mapper.IteyeBeanDao;
 import cn.lcstudio.front.service.IteyeBeanService;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 @Service
 public class IteyeBeanServiceImpl implements IteyeBeanService{

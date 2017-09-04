@@ -1,13 +1,12 @@
 package cn.lcstudio.lucene.Dao;
 
+import cn.lcstudio.bean.IteyeBean;
+import org.junit.Test;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.util.List;
-
-import org.junit.Test;
-
-import cn.lcstudio.bean.IteyeBean;
 
 
 

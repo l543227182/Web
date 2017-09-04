@@ -1,20 +1,17 @@
 package cn.lcstudio.admin.controller;
 
-import java.util.Date;
-
-import javax.servlet.http.HttpServletRequest;
-
+import cn.itcast.common.page.Pagination;
+import cn.lcstudio.bean.Notice;
+import cn.lcstudio.bean.Users;
+import cn.lcstudio.front.service.NoticeService;
+import cn.lcstudio.utils.ControlerUtils;
+import cn.lcstudio.utils.privilegeValue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import cn.itcast.common.page.Pagination;
-import cn.lcstudio.bean.Notice;
-import cn.lcstudio.bean.Users;
-import cn.lcstudio.front.mapper.NoticeDao;
-import cn.lcstudio.front.service.NoticeService;
-import cn.lcstudio.utils.ControlerUtils;
-import cn.lcstudio.utils.privilegeValue;
+import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 
 @Controller
 @RequestMapping("/admin/notice")

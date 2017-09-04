@@ -1,8 +1,8 @@
 package cn.lcstudio.front.mapper;
 
-import java.util.List;
-
 import cn.lcstudio.bean.Roles;
+
+import java.util.List;
 public interface RolesDao {
 
 	public List<Roles> getAllRoles();

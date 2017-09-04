@@ -1,20 +1,17 @@
 package cn.lcstudio.admin.controller;
 
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.json.HTTP;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-
 import cn.itcast.common.page.Pagination;
 import cn.lcstudio.bean.Roles;
 import cn.lcstudio.bean.Users;
 import cn.lcstudio.front.service.UsersService;
 import cn.lcstudio.front.service.rolesService;
 import cn.lcstudio.utils.privilegeValue;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @RequestMapping("/admin/user")
 @Controller

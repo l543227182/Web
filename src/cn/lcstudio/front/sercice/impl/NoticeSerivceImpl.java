@@ -1,17 +1,14 @@
 package cn.lcstudio.front.sercice.impl;
 
-import java.util.List;
-
-import javax.annotation.Resource;
-
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import cn.itcast.common.page.Pagination;
-import cn.lcstudio.bean.Article;
 import cn.lcstudio.bean.Notice;
 import cn.lcstudio.front.mapper.NoticeDao;
 import cn.lcstudio.front.service.NoticeService;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.annotation.Resource;
+import java.util.List;
 
 @Transactional
 @Service

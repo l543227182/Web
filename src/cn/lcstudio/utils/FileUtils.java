@@ -1,21 +1,16 @@
 package cn.lcstudio.utils;
 
+import cn.lcstudio.bean.FileInfo;
+import cn.lcstudio.front.service.FileService;
+import org.apache.commons.io.FilenameUtils;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.UnsupportedEncodingException;
 import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.commons.io.FilenameUtils;
-
-import com.ckfinder.connector.handlers.command.DownloadFileCommand;
-
-import cn.lcstudio.bean.FileInfo;
-import cn.lcstudio.front.service.FileService;
 
 public class FileUtils {
 	
