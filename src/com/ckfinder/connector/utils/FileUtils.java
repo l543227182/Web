@@ -18,11 +18,9 @@ import com.ckfinder.connector.configuration.IConfiguration;
 import com.ckfinder.connector.data.ResourceType;
 import org.apache.commons.fileupload.FileItem;
 
-import java.io.*;
 import java.net.URLEncoder;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 

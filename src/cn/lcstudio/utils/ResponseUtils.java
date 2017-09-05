@@ -8,7 +8,7 @@ import java.io.IOException;
  * ClassName: ResponseUtils
  * @Description: TODO
  * @author lc
- * @date 2016Äê10ÔÂ22ÈÕ
+ * @date 2016å¹´10æœˆ22æ—¥
  */
 public class ResponseUtils {
 
@@ -21,7 +21,7 @@ public class ResponseUtils {
 	 * @return void  
 	 * @throws
 	 * @author lc
-	 * @date 2016Äê10ÔÂ22ÈÕ ÏÂÎç8:00:23
+	 * @date 2016å¹´10æœˆ22æ—¥ ä¸‹åˆ8:00:23
 	 */
 	public static void render(HttpServletResponse response,String contentType,String text){
 		response.setContentType(contentType);

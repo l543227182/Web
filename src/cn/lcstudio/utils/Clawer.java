@@ -41,7 +41,7 @@ public class Clawer {
 			body=Jsoup.parse(body).select(".news").select("#news_content").toString();
 			bean.setBody(body);
 			beans.add(bean);
-			System.out.println(j+"  :  "+i);			
+			System.out.println(j+"  :  "+i);
 		}
 		FileOutputStream file=new FileOutputStream(new File("C:\\Users\\lc\\Desktop\\freemaker","iteyeBeans"+j+".src"));
 		ObjectOutputStream oob=new ObjectOutputStream(file);
@@ -62,7 +62,6 @@ public class Clawer {
 			//System.out.println(response.body());
 			Document d=Jsoup.parse(response.body());
 			Elements elements=d.select(".content");
-			System.out.println(elements.get(0));
 			for(int i=0;i<elements.size();i++){
 				Element e=elements.get(i);
 				IteyeBean bean=new IteyeBean();

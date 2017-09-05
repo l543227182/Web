@@ -43,7 +43,7 @@ public class FileController{
 	 * @return String  
 	 * @throws
 	 * @author lc
-	 * @date 2016Äê10ÔÂ26ÈÕ ÏÂÎç11:02:33
+	 * @date 2016å¹´10æœˆ26æ—¥ ä¸‹åˆ11:02:33
 	 */
 	@RequestMapping("/filePage")
 	public String FileListPage(Integer pageNum,HttpServletRequest request){
@@ -51,7 +51,7 @@ public class FileController{
 		
 		Users user=(Users)request.getSession().getAttribute("user");	
 		Pagination p=null;
-		//³¬¼¶¹ÜÀíÔ±¿ÉÒÔ²é¿´ËùÓĞµÄÎÄ¼ş
+		//è¶…çº§ç®¡ç†å‘˜å¯ä»¥æŸ¥çœ‹æ‰€æœ‰çš„æ–‡ä»¶
 		if(!user.getROLEID().equals("2")){
 			 p=fileService.getFileByUserID(pageNum, user.getId());
 		}else{
@@ -80,38 +80,38 @@ public class FileController{
 		 * @return String  
 		 * @throws
 		 * @author 
-		 * @date 2016Äê10ÔÂ23ÈÕ ÏÂÎç7:34:36
+		 * @date 2016å¹´10æœˆ23æ—¥ ä¸‹åˆ7:34:36
 		 */
 	
 		@RequestMapping("/upLoadFiles"	)
 		public String upLoadFiles(HttpServletRequest request,HttpServletResponse response,String UserId) throws IllegalStateException, IOException {
-			//´´½¨Ò»¸öÍ¨ÓÃµÄ¶à²¿·Ö½âÎöÆ÷
+			//åˆ›å»ºä¸€ä¸ªé€šç”¨çš„å¤šéƒ¨åˆ†è§£æå™¨
 			CommonsMultipartResolver multipartResolver = 
 					new CommonsMultipartResolver(request.getSession().getServletContext());
 		
-			//ÅĞ¶Ï request ÊÇ·ñÓĞÎÄ¼şÉÏ´«,¼´¶à²¿·ÖÇëÇó
+			//åˆ¤æ–­ request æ˜¯å¦æœ‰æ–‡ä»¶ä¸Šä¼ ,å³å¤šéƒ¨åˆ†è¯·æ±‚
 			if(multipartResolver.isMultipart(request)){
-				//×ª»»³É¶à²¿·Örequest  
+				//è½¬æ¢æˆå¤šéƒ¨åˆ†request  
 				MultipartHttpServletRequest multiRequest=(MultipartHttpServletRequest)request;				
-				//È¡µÃrequestÖĞµÄËùÓĞÎÄ¼şÃû
+				//å–å¾—requestä¸­çš„æ‰€æœ‰æ–‡ä»¶å
 				//Enumeration<String> params=multiRequest.getParameterNames();
-				// ±£´æÎÄ¼şĞÅÏ¢µÄlist
+				// ä¿å­˜æ–‡ä»¶ä¿¡æ¯çš„list
 				List<FileInfo> list=new ArrayList<FileInfo>();
 				
 				Iterator<String> iter = multiRequest.getFileNames();
 				while(iter.hasNext()){
-					//¼ÇÂ¼ÉÏ´«¹ı³ÌÆğÊ¼Ê±µÄÊ±¼ä£¬ÓÃÀ´¼ÆËãÉÏ´«Ê±¼ä
+					//è®°å½•ä¸Šä¼ è¿‡ç¨‹èµ·å§‹æ—¶çš„æ—¶é—´ï¼Œç”¨æ¥è®¡ç®—ä¸Šä¼ æ—¶é—´
 					int pre = (int) System.currentTimeMillis();
-					//È¡µÃÉÏ´«ÎÄ¼ş
+					//å–å¾—ä¸Šä¼ æ–‡ä»¶
 					String formName=iter.next();
 					MultipartFile file = multiRequest.getFile(formName);
 					
 					if(file != null){
-						//ÓÃ»§×Ô¼ºĞŞ¸ÄµÄÃû×Ö
+						//ç”¨æˆ·è‡ªå·±ä¿®æ”¹çš„åå­—
 						String uName=request.getParameter(formName);
-						//È¡µÃµ±Ç°ÉÏ´«ÎÄ¼şµÄÎÄ¼şÃû³Æ
+						//å–å¾—å½“å‰ä¸Šä¼ æ–‡ä»¶çš„æ–‡ä»¶åç§°
 						String myFileName = file.getOriginalFilename();						
-						//Èç¹ûÃû³Æ²»Îª,ËµÃ÷¸ÃÎÄ¼ş´æÔÚ£¬·ñÔòËµÃ÷¸ÃÎÄ¼ş²»´æÔÚ
+						//å¦‚æœåç§°ä¸ä¸º,è¯´æ˜è¯¥æ–‡ä»¶å­˜åœ¨ï¼Œå¦åˆ™è¯´æ˜è¯¥æ–‡ä»¶ä¸å­˜åœ¨
 						if(myFileName.trim() !=""){
 							System.out.println(myFileName);
 							FileInfo fi=new FileInfo();
@@ -119,10 +119,10 @@ public class FileController{
 							fi.setId(ControlerUtils.CreateUUID());
 							fi.setUserID(UserId);
 							fi.setSize((int) file.getSize());
-							//ÖØÃüÃûÉÏ´«ºóµÄÎÄ¼şÃû
+							//é‡å‘½åä¸Šä¼ åçš„æ–‡ä»¶å
 							String paramOpen=request.getParameter("open_"+formName);
 							//System.out.println(paramOpen);
-							//Èç¹ûÎªon±íÊ¾²»¹«¿ª 
+							//å¦‚æœä¸ºonè¡¨ç¤ºä¸å…¬å¼€ 
 							if(paramOpen!=null){
 								fi.setOpen(!paramOpen.equals("on"));;
 							}else{
@@ -132,7 +132,7 @@ public class FileController{
 							String path="C:\\Users\\lc\\Desktop\\demoUpload\\";
 							String ext=FilenameUtils.getExtension(myFileName);
 							File localFile=null;
-							//ĞŞ¸ÄÎÄ¼şÃû
+							//ä¿®æ”¹æ–‡ä»¶å
 							if(uName!=null&&!uName.trim().equals("")){
 								myFileName=uName+"_"+fi.getId()+"."+ext;								
 								path=ControlerUtils.makePath(myFileName, path);
@@ -145,20 +145,20 @@ public class FileController{
 								fi.setPath(path);								
 							}
 								list.add(fi);
-								System.out.println("ÉÏ´«ÎÄ¼ş"+path);
-								logger.info("ÉÏ´«ÎÄ¼ş:  "+path);
-							//¶¨ÒåÉÏ´«Â·¾¶
+								System.out.println("ä¸Šä¼ æ–‡ä»¶"+path);
+								logger.info("ä¸Šä¼ æ–‡ä»¶:  "+path);
+							//å®šä¹‰ä¸Šä¼ è·¯å¾„
 							localFile= new File(path,myFileName);
 							
 							file.transferTo(localFile);
 						}
 					}
-					//¼ÇÂ¼ÉÏ´«¸ÃÎÄ¼şºóµÄÊ±¼ä
+					//è®°å½•ä¸Šä¼ è¯¥æ–‡ä»¶åçš„æ—¶é—´
 					int finaltime = (int) System.currentTimeMillis();
 					System.out.println((finaltime - pre)/60.00);
 				}
 				fileService.addFile(list);
-				System.out.println("Ìí¼ÓÎÄ¼şÍê³É");
+				System.out.println("æ·»åŠ æ–‡ä»¶å®Œæˆ");
 			}
 			return "redirect:filePage.do";
 		}

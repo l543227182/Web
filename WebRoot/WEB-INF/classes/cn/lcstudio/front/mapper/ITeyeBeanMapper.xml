@@ -38,7 +38,7 @@
 		</select>
 		<delete id="delBeans" parameterType="string">
 			delete  from iteyebean  where id in
-			<foreach collection="array" close=")" open="(" item="id">
+			<foreach collection="array" close=")" separator="," open="(" item="id">
 			 #{id}
 			</foreach>
 		</delete>

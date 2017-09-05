@@ -24,19 +24,19 @@ public class RolesController {
 	@Autowired
 	private PermissionDao dao;
 	/**
-	 * @Description: ÁĞ³öÈ¨ÏŞÀàĞÍ
+	 * @Description: åˆ—å‡ºæƒé™ç±»å‹
 	 * @param @param request
 	 * @param @return   
 	 * @return String  
 	 * @throws
 	 * @author lcD
-	 * @date 2016Äê10ÔÂ9ÈÕ ÉÏÎç9:49:51
+	 * @date 2016å¹´10æœˆ9æ—¥ ä¸Šåˆ9:49:51
 	 */
 
 	@RequestMapping("/listRoles")
 	public String listAllRoles(HttpServletRequest request){
 		List<Roles> roles=rolesService.getAllRoles();
-		//½«´æ´¢ÔÚremarkµÄÈ¨ÏŞÖµÈ¥³ı
+		//å°†å­˜å‚¨åœ¨remarkçš„æƒé™å€¼å»é™¤
 		for(int i=0;i<roles.size();i++){
 			Roles role=roles.get(i);
 			role.setREMARK(role.getREMARK().split("#")[0]);

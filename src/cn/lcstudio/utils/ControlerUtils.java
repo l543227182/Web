@@ -24,7 +24,7 @@ public class ControlerUtils {
 	 * @return int  
 	 * @throws
 	 * @author lc
-	 * @date 2016Äê11ÔÂ3ÈÕ ÏÂÎç4:22:55
+	 * @date 2016å¹´11æœˆ3æ—¥ ä¸‹åˆ4:22:55
 	 */
 	public static int getRandomID(){
 		return new Random().nextInt(9999999);
@@ -36,29 +36,29 @@ public class ControlerUtils {
 	 * @return String  
 	 * @throws
 	 * @author lc
-	 * @date 2016Äê10ÔÂ19ÈÕ ÏÂÎç10:14:49
+	 * @date 2016å¹´10æœˆ19æ—¥ ä¸‹åˆ10:14:49
 	 */
 	public final static String CreateUUID(){
 		return UUID.randomUUID().toString();
 	}
     public final static String MD5(String pwd) {
-        //ÓÃÓÚ¼ÓÃÜµÄ×Ö·û
+        //ç”¨äºåŠ å¯†çš„å­—ç¬¦
         char md5String[] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
                 'A', 'B', 'C', 'D', 'E', 'F' };
         try {
-            //Ê¹ÓÃÆ½Ì¨µÄÄ¬ÈÏ×Ö·û¼¯½«´Ë String ±àÂëÎª byteĞòÁĞ£¬²¢½«½á¹û´æ´¢µ½Ò»¸öĞÂµÄ byteÊı×éÖĞ
+            //ä½¿ç”¨å¹³å°çš„é»˜è®¤å­—ç¬¦é›†å°†æ­¤ String ç¼–ç ä¸º byteåºåˆ—ï¼Œå¹¶å°†ç»“æœå­˜å‚¨åˆ°ä¸€ä¸ªæ–°çš„ byteæ•°ç»„ä¸­
             byte[] btInput = pwd.getBytes();
              
-            //ĞÅÏ¢ÕªÒªÊÇ°²È«µÄµ¥Ïò¹şÏ£º¯Êı£¬Ëü½ÓÊÕÈÎÒâ´óĞ¡µÄÊı¾İ£¬²¢Êä³ö¹Ì¶¨³¤¶ÈµÄ¹şÏ£Öµ¡£
+            //ä¿¡æ¯æ‘˜è¦æ˜¯å®‰å…¨çš„å•å‘å“ˆå¸Œå‡½æ•°ï¼Œå®ƒæ¥æ”¶ä»»æ„å¤§å°çš„æ•°æ®ï¼Œå¹¶è¾“å‡ºå›ºå®šé•¿åº¦çš„å“ˆå¸Œå€¼ã€‚
             MessageDigest mdInst = MessageDigest.getInstance("MD5");
              
-            //MessageDigest¶ÔÏóÍ¨¹ıÊ¹ÓÃ update·½·¨´¦ÀíÊı¾İ£¬ Ê¹ÓÃÖ¸¶¨µÄbyteÊı×é¸üĞÂÕªÒª
+            //MessageDigestå¯¹è±¡é€šè¿‡ä½¿ç”¨ updateæ–¹æ³•å¤„ç†æ•°æ®ï¼Œ ä½¿ç”¨æŒ‡å®šçš„byteæ•°ç»„æ›´æ–°æ‘˜è¦
             mdInst.update(btInput);
              
-            // ÕªÒª¸üĞÂÖ®ºó£¬Í¨¹ıµ÷ÓÃdigest£¨£©Ö´ĞĞ¹şÏ£¼ÆËã£¬»ñµÃÃÜÎÄ
+            // æ‘˜è¦æ›´æ–°ä¹‹åï¼Œé€šè¿‡è°ƒç”¨digestï¼ˆï¼‰æ‰§è¡Œå“ˆå¸Œè®¡ç®—ï¼Œè·å¾—å¯†æ–‡
             byte[] md = mdInst.digest();
              
-            // °ÑÃÜÎÄ×ª»»³ÉÊ®Áù½øÖÆµÄ×Ö·û´®ĞÎÊ½
+            // æŠŠå¯†æ–‡è½¬æ¢æˆåå…­è¿›åˆ¶çš„å­—ç¬¦ä¸²å½¢å¼
             int j = md.length;
             char str[] = new char[j * 2];
             int k = 0;
@@ -68,7 +68,7 @@ public class ControlerUtils {
                 str[k++] = md5String[byte0 & 0xf];   //   F
             }
              
-            //·µ»Ø¾­¹ı¼ÓÃÜºóµÄ×Ö·û´®
+            //è¿”å›ç»è¿‡åŠ å¯†åçš„å­—ç¬¦ä¸²
             return new String(str);
              
         } catch (Exception e) {
@@ -99,7 +99,7 @@ public class ControlerUtils {
 	 * @return boolean  
 	 * @throws
 	 * @author lc
-	 * @date 2016Äê10ÔÂ19ÈÕ ÏÂÎç10:14:58
+	 * @date 2016å¹´10æœˆ19æ—¥ ä¸‹åˆ10:14:58
 	 */
 	public static boolean validateRegUser(Users user) {
 		// TODO Auto-generated method stub
@@ -122,7 +122,7 @@ public class ControlerUtils {
 	 * @return String  
 	 * @throws
 	 * @author lc
-	 * @date 2016Äê10ÔÂ25ÈÕ ÏÂÎç5:35:56
+	 * @date 2016å¹´10æœˆ25æ—¥ ä¸‹åˆ5:35:56
 	 */
 	public static  String makePath(String filename,String savePath){
 		
@@ -147,7 +147,7 @@ public class ControlerUtils {
 	 * @return List<IteyeBean>  
 	 * @throws
 	 * @author lc
-	 * @date 2016Äê11ÔÂ9ÈÕ ÉÏÎç11:23:28
+	 * @date 2016å¹´11æœˆ9æ—¥ ä¸Šåˆ11:23:28
 	 */
 	public static List<IteyeBean> ClawerUtils() throws Exception{
 		String url="http://www.iteye.com/news?page=1";

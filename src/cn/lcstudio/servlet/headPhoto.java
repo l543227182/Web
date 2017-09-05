@@ -25,7 +25,7 @@ public class headPhoto extends HttpServlet {
             BufferedImage image=ImageIO.read(new ByteArrayInputStream(newUser.getImage()));
             ImageIO.write(image, "jpg", response.getOutputStream());
             response.getOutputStream().flush();*/
-          // System.out.println("ÎÒÀ´ÁË");
+          // System.out.println("æˆ‘æ¥äº†");
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)

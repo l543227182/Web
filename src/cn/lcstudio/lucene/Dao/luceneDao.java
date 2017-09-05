@@ -4,6 +4,7 @@ import cn.lcstudio.bean.IteyeBean;
 import cn.lcstudio.lucene.utils.luceneUtils;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.IndexWriter;
+import org.apache.lucene.index.Term;
 import org.apache.lucene.queryparser.classic.QueryParser;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Query;
@@ -24,7 +25,20 @@ public class luceneDao {
 		iw.addDocument(luceneUtils.toDocument(bean));
 		iw.close();
 	}
-	
+
+	public void delObject(String[] ids){
+        try {
+            IndexWriter indexWriter = luceneUtils.getIndexWriter();
+            for(int i=0;i<ids.length;i++){
+                Term term =new Term("id" ,ids[i]);
+                indexWriter.deleteDocuments(term);
+            }
+            indexWriter.commit();
+            indexWriter.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 	public List<IteyeBean> SearchIteyeBean(String keyWord,int start ,int rows) {
 		try {
 			//System.out.println("SearchIteyeBean!!");
@@ -41,7 +55,7 @@ public class luceneDao {
 				ScoreDoc scoreDoc = topDocs.scoreDocs[i];
 				int docSn = scoreDoc.doc;
 				Document doc = indexSearcher.doc(docSn);				
-				// ¸ßÁÁ
+				// é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·
 				luceneUtils.highlight(doc, "title", highlighter);
 				luceneUtils.highlight(doc, "summary", highlighter);
 				

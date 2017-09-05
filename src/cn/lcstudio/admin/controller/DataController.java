@@ -54,7 +54,4 @@ public class DataController {
 		beanService.delBean(ids);		
 		return "redirect:DataCenter.do?pageNo="+pageNo;
 	}
-	
-
-	
 }

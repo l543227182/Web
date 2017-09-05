@@ -61,7 +61,7 @@ public class adminController {
 	 * @return String  
 	 * @throws
 	 * @author lc
-	 * @date 2016Äê10ÔÂ21ÈÕ ÉÏÎç9:44:08
+	 * @date 2016å¹´10æœˆ21æ—¥ ä¸Šåˆ9:44:08
 	 */
 	@RequestMapping("/ModifyData")
 	public String ModifyData(Users user,HttpServletRequest request){
@@ -72,9 +72,9 @@ public class adminController {
 			imageService.updateHeadPhoto(ui);
 		}
 			if(user.getPassword()!=null)
-			logger.info("ÓÃ»§¸üĞÂ"+"ÃÜÂë  Îª:"+user.getPassword());
+			logger.info("ç”¨æˆ·æ›´æ–°"+"å¯†ç   ä¸º:"+user.getPassword());
 			us.updateUser(user);	
-			//¸üĞÂuserÖĞµÄÄÚÈİ			
+			//æ›´æ–°userä¸­çš„å†…å®¹			
 		
 		user=us.getUserByID(user.getId());
 		request.getSession().setAttribute("user", user);
@@ -90,21 +90,21 @@ public class adminController {
 	 * @return void  
 	 * @throws
 	 * @author lc
-	 * @date 2016Äê10ÔÂ23ÈÕ ÉÏÎç12:39:35
+	 * @date 2016å¹´10æœˆ23æ—¥ ä¸Šåˆ12:39:35
 	 */
 	@RequestMapping("/uploadPic")
 	public void uploadPic(@RequestParam(required=false)  MultipartFile pic,HttpServletResponse response) throws IOException{
 		String ext=FilenameUtils.getExtension(pic.getOriginalFilename());
-		//Éú³ÉÍ¼Æ¬Ãû³Æ
+		//ç”Ÿæˆå›¾ç‰‡åç§°
 		DateFormat df=new SimpleDateFormat("yyyyMMddHHmmssSSS");
 		String str=df.format(new Date());
-		//Ê¹ÓÃjersey´«µ½ÁíÒ»Ì¨·şÎñÆ÷ÉÏÃæ
+		//ä½¿ç”¨jerseyä¼ åˆ°å¦ä¸€å°æœåŠ¡å™¨ä¸Šé¢
 		Client client=new Client();	
 		String sqlPath="upload/"+str+"."+ext;		
 		String url="http://localhost:8088/image-web/"+sqlPath;
 		WebResource resource=client.resource(url);
 		resource.put(String.class,pic.getBytes());
-		logger.info("ÉÏ´«Í·Ïñ-success");
+		logger.info("ä¸Šä¼ å¤´åƒ-success");
 		
 		
 		JSONObject jb=new JSONObject();

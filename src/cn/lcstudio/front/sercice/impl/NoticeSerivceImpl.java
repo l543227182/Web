@@ -24,9 +24,9 @@ public class NoticeSerivceImpl implements NoticeService {
 	}
 
 	@Override
-	public void delNotice(String[] id) {
+	public void delNotice(String[] ids) {
 		// TODO Auto-generated method stub
-		noticeDao.delNotice(id);
+		noticeDao.delNotice(ids);
 	}
 
 	@Override

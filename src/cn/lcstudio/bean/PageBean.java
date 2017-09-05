@@ -1,18 +1,18 @@
 package cn.lcstudio.bean;
 
 public class PageBean {
-	/*-------------------·ÖÒ³Êı¾İ------------*/
-	//¶¨Òå³£Á¿ Ã¿Ò³Êı
+	/*-------------------åˆ†é¡µæ•°æ®------------*/
+	//å®šä¹‰å¸¸é‡ æ¯é¡µæ•°
 		public final static int DEFAULT_SIZE = 10;
-		//Ã¿Ò³Êı
+		//æ¯é¡µæ•°
 		protected int pageSize = DEFAULT_SIZE;
-		//ÆğÊ¼ĞĞ
-		protected int startRow = 0;//ÆğÊ¼ĞĞ
-		//Ò³Âë
+		//èµ·å§‹è¡Œ
+		protected int startRow = 0;//èµ·å§‹è¡Œ
+		//é¡µç 
 		protected int pageNo = 1;
-		//Sql²éÑ¯×Ö¶Î
+		//SqlæŸ¥è¯¢å­—æ®µ
 		protected String fields;
-		//×Ü¼ÇÂ¼Êı
+		//æ€»è®°å½•æ•°
 		protected int records;
 		
 		

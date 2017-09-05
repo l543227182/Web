@@ -74,7 +74,7 @@ public class FileInfo extends PageBean{
 		UserID = userID;
 	}
 	
-	//ËÑË÷¹Ø¼ü×Ö
+	//æœç´¢å…³é”®å­—
 	private String keyWords;
 	
 	public String getKeyWords() {

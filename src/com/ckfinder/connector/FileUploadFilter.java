@@ -11,7 +11,6 @@
  */
 package com.ckfinder.connector;
 
-import javax.servlet.*;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

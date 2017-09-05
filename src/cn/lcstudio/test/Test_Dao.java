@@ -55,7 +55,7 @@ public class Test_Dao {
 			for(int i=0;i<len;i++){
 				IteyeBean bean=list.get(i);					
 				if(bean.getTitle().trim().equals(it.getTitle().trim())){
-					System.out.println("ÕÒµ½ÏàÍ¬µÄ±êÌâ:"+bean.getTitle());
+					System.out.println("æ‰¾åˆ°ç›¸åŒçš„æ ‡é¢˜:"+bean.getTitle());
 					break;
 				}
 				 System.out.println(bean.getTitle());

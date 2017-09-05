@@ -6,6 +6,7 @@ import cn.lcstudio.front.service.IteyeBeanService;
 import cn.lcstudio.front.service.StaticPageService;
 import cn.lcstudio.lucene.Dao.luceneDao;
 import cn.lcstudio.utils.Clawer;
+import cn.lcstudio.utils.computeSemblance;
 import org.apache.log4j.Logger;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
@@ -34,7 +35,7 @@ public class TimeTask  implements Job{
 	 * @return void  
 	 * @throws
 	 * @author lc
-	 * @date 2016Äê11ÔÂ13ÈÕ ÏÂÎç4:49:43
+	 * @date 2016é”Ÿæ–¤æ‹·11é”Ÿæ–¤æ‹·13é”Ÿæ–¤æ‹· é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·4:49:43
 	 */
 
 	public void addIteye(){
@@ -44,27 +45,21 @@ public class TimeTask  implements Job{
 			int len=list.size();
 			for(int i=0;i<len;i++){
 				IteyeBean bean=list.get(i);				
-				if(bean.getTitle().trim().equals(it.getTitle().trim())){		 
-					System.out.println("ÕÒµ½  ÏàÍ¬µÄ±êÌâ:"+bean.getTitle());
+				if(computeSemblance.compute(bean.getTitle().trim(),it.getTitle().trim()) < 0.9 ){
 					len=i+1;
 					list.subList(0, i);
 					break;
 				}
-				 System.out.println(bean.getTitle());
-				 //Ìí¼Óµ½Êı¾İ¿â
 				 beanService.addBean(bean);
 				 
-				 //ĞÂÊı¾İÉú³ÉÒ³Ãæ
 				 Map<String, Object> map=new HashMap<String, Object>();
 				 map.put("bean", bean);
 				 pageService.productIndex(map,bean.getId());
-				 
-				 //ĞÂÊı¾İÌí¼ÓË÷Òı
 				 dao.addObject(bean);
 				 				
 			}
 			System.out.println(list.size());
-			logger.info("Ìí¼ÓĞÂÊı¾İ:"+"   "+(len));
+			logger.info("å¨£è¯²å§éç‰ˆåµæ¶“î…æšŸ:"+"   "+(len));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

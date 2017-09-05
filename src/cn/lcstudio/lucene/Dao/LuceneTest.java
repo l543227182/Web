@@ -35,7 +35,7 @@ public class LuceneTest {
 	@Test
 	public void searchIteyeBean(){
 		try {			
-			List<IteyeBean> list=dao.SearchIteyeBean("Mark！Android最佳的开源库集锦", 0, 10);
+			List<IteyeBean> list=dao.SearchIteyeBean("Mark锛丄ndroid鏈�浣崇殑寮�婧愬簱闆嗛敠", 0, 10);
 			System.out.println(list.get(0).getTitle()+"\n"+list.get(0).getSummary());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

@@ -35,42 +35,42 @@ public class LimitInterceptor implements HandlerInterceptor{
 			Object obj) throws Exception {
 	// TODO Auto-generated method stub	   	
 	String path=request.getRequestURI();
-	//Èç¹ûÇëÇóÎª.do
+	//å¦‚æœè¯·æ±‚ä¸º.do
 	 if(path.contains(".do")){
 		Class<? extends Object>  clazz=obj.getClass();
-			 //±éÀúÓĞ RequestMapping ºÍ AnnotationLimit·½·¨ 
+			 //éå†æœ‰ RequestMapping å’Œ AnnotationLimitæ–¹æ³• 
 		if(clazz.isAnnotationPresent(RequestMapping.class)
     		&&clazz.isAnnotationPresent(privilegeValue.class)){		
 		       RequestMapping  methodinfo=clazz.getAnnotation(RequestMapping.class);
 		       privilegeValue limitValue=clazz.getAnnotation(privilegeValue.class);
 		      
 		       for(String value : methodinfo.value()) {
-		    	   //Èç¹ûÇëÇóurl °üº¬requestmappingÖĞµÄvalue ±íÊ¾ÇëÇóµÄ¾ÍÊÇÕâ¸öÓÃ»§
+		    	   //å¦‚æœè¯·æ±‚url åŒ…å«requestmappingä¸­çš„value è¡¨ç¤ºè¯·æ±‚çš„å°±æ˜¯è¿™ä¸ªç”¨æˆ·
 				  if(path.contains(value)){
-					  //ÔÚsessionÖĞµÃµ½µÇÂ½µÄÓÃ»§
+					  //åœ¨sessionä¸­å¾—åˆ°ç™»é™†çš„ç”¨æˆ·
 					  Users u=(Users) request.getSession().getAttribute("user");
 					
-					  //Îª¿Õ±íÊ¾»¹Ã»ÓĞµÇÂ¼£¬ ·ÅĞĞ
+					  //ä¸ºç©ºè¡¨ç¤ºè¿˜æ²¡æœ‰ç™»å½•ï¼Œ æ”¾è¡Œ
 					  if(u==null){
 						  return true;
 					  }
 									 
 					  long pid=u.getPID();
-					  //²Ù×÷È¨ÏŞÖµ Óë µ±Ç°ÓÃ»§½ÇÉ«µÄÈ¨ÏŞÖµ  Óë²Ù×÷ Èç¹û½á¹ûµÈÓÚ²Ù×÷È¨ÏŞÖµ±íÊ¾ÓÃ»§ÓĞÈ¨ÏŞ·ÃÎÊ 
-					  //Èç¹û²»ÏàµÈ ±íÊ¾ÎŞÈ¨ÏŞ·ÃÎÊ 
+					  //æ“ä½œæƒé™å€¼ ä¸ å½“å‰ç”¨æˆ·è§’è‰²çš„æƒé™å€¼  ä¸æ“ä½œ å¦‚æœç»“æœç­‰äºæ“ä½œæƒé™å€¼è¡¨ç¤ºç”¨æˆ·æœ‰æƒé™è®¿é—® 
+					  //å¦‚æœä¸ç›¸ç­‰ è¡¨ç¤ºæ— æƒé™è®¿é—® 
 					  boolean b=(pid & limitValue.value())==limitValue.value()
 							  ?true:false;
 					  
-					  System.out.println("×¢ÊÍÃû³Æ:"+value);
-				      System.out.println("ÇëÇóÂ·¾¶:"+path);
+					  System.out.println("æ³¨é‡Šåç§°:"+value);
+				      System.out.println("è¯·æ±‚è·¯å¾„:"+path);
 					  if(b){
-						   System.out.println("ÓĞ·ÃÎÊÈ¨ÏŞ");
+						   System.out.println("æœ‰è®¿é—®æƒé™");
 						  return true;
 					  }else{
-						  System.out.println("Ã´ÓĞ·ÃÎÊÈ¨ÏŞ");
+						  System.out.println("ä¹ˆæœ‰è®¿é—®æƒé™");
 						  response.setContentType("text/html;charset=UTF-8");
 						  response.getWriter().write("<html><head><script>"
-						  		+ "alert(\"ÄãÃ»ÓĞ·ÃÎÊÈ¨ÏŞ\");history.go(-1);"
+						  		+ "alert(\"ä½ æ²¡æœ‰è®¿é—®æƒé™\");history.go(-1);"
 						  		+ "</script></head><body></body></html>");
 						  return false;
 					  }

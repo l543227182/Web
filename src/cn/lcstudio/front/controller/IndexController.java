@@ -51,7 +51,7 @@ public class IndexController {
 				return "redirect:/index.do?message=1";
 			}
 		}	
-		//¼Ç×¡¿Í»§¶Ë	
+		//è®°ä½å®¢æˆ·ç«¯	
 	   //Cookie cookie=new Cookie("user", arg1)
 		return "redirect:/index.do";
 	}
@@ -73,12 +73,12 @@ public class IndexController {
 	 * @return String  
 	 * @throws
 	 * @author lc
-	 * @date 2016Äê10ÔÂ19ÈÕ ÏÂÎç10:14:35
+	 * @date 2016å¹´10æœˆ19æ—¥ ä¸‹åˆ10:14:35
 	 */
 	@RequestMapping("/RegisterUser")
 	public String RegisterUser(Users user,HttpServletRequest request){
 		
-		System.out.println("×¢²áµÄĞÂÓÃ»§:"+user.getPassword());
+		System.out.println("æ³¨å†Œçš„æ–°ç”¨æˆ·:"+user.getPassword());
 		 
 		if(ControlerUtils.validateRegUser(user)){
 		user.setUsername(user.getUsername().trim());
@@ -89,7 +89,7 @@ public class IndexController {
 		user.setRegDate(new Date());
 		user.setROLEID("6884341");
 		usersService.addUser(user);
-		//ÎªÓÃ»§´´½¨Ò»¸öÍ·Ïñ
+		//ä¸ºç”¨æˆ·åˆ›å»ºä¸€ä¸ªå¤´åƒ
 		UserImage ui=new UserImage();
 		ui.setId(ControlerUtils.CreateUUID());
 		ui.setPath(null);
@@ -114,10 +114,10 @@ public class IndexController {
 		 response.setContentType("text/xml;charset=utf-8");  
 	     response.setHeader("Cache-Control", "no-cache");   
 		if(user==null){
-			return "Ã»ÓĞ±»×¢²á";
+			return "æ²¡æœ‰è¢«æ³¨å†Œ";
 		}
 		else{
-			return "ÓÃ»§´æÔÚ";
+			return "ç”¨æˆ·å­˜åœ¨";
 		}	
 	}
 	
