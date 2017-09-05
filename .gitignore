@@ -1,3 +1,6 @@
 .svn/wc.db
 .svn/wc.db
 .svn/wc.db-journal
+out/
+.idea/
+WebRoot/WEB-INF/classes
