@@ -18,6 +18,7 @@ import com.ckfinder.connector.configuration.Events.EventTypes;
 import com.ckfinder.connector.configuration.IConfiguration;
 import com.ckfinder.connector.data.BeforeExecuteCommandEventArgs;
 import com.ckfinder.connector.errors.ConnectorException;
+import com.ckfinder.connector.handlers.command.*;
 import com.ckfinder.connector.utils.AccessControlUtil;
 
 import javax.servlet.ServletConfig;

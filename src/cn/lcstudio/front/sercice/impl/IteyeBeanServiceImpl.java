@@ -4,6 +4,8 @@ import cn.itcast.common.page.Pagination;
 import cn.lcstudio.bean.IteyeBean;
 import cn.lcstudio.front.mapper.IteyeBeanDao;
 import cn.lcstudio.front.service.IteyeBeanService;
+import cn.lcstudio.lucene.Dao.luceneDao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -11,8 +13,11 @@ import javax.annotation.Resource;
 @Service
 public class IteyeBeanServiceImpl implements IteyeBeanService{
 
+	@Autowired
+	private luceneDao luceneDao;
 	@Resource
 	private IteyeBeanDao beanDao;
+
 	@Override
 	public int addBean(IteyeBean bean) {
 		// TODO Auto-generated method stub
@@ -21,9 +26,10 @@ public class IteyeBeanServiceImpl implements IteyeBeanService{
 	}
 
 	@Override
-	public void delBean(String[] id) {
+	public void delBean(String[] ids) {
 		// TODO Auto-generated method stub
-		beanDao.delBeans(id);
+		beanDao.delBeans(ids);
+        luceneDao.delObject(ids);
 	}
 
 	@Override

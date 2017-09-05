@@ -18,9 +18,11 @@ import com.ckfinder.connector.configuration.IConfiguration;
 import com.ckfinder.connector.data.ResourceType;
 import org.apache.commons.fileupload.FileItem;
 
+import java.io.*;
 import java.net.URLEncoder;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -61,7 +63,7 @@ public class FileUtils {
 	 * @return list of files or subdirectores in selected directory
 	 */
 	public static List<String> findChildrensList(final File dir,
-			final boolean searchDirs) {
+												 final boolean searchDirs) {
 		List<String> files = new ArrayList<String>();
 		for (String subFiles : dir.list()) {
 			File file = new File(dir + "/" + subFiles);

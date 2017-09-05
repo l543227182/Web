@@ -2,13 +2,13 @@ package cn.lcstudio.test;
 
 import cn.lcstudio.bean.IteyeBean;
 import cn.lcstudio.bean.UserArticle;
-import cn.lcstudio.bean.Users;
 import cn.lcstudio.front.mapper.IteyeBeanDao;
 import cn.lcstudio.front.mapper.UserArticleDao;
 import cn.lcstudio.front.service.IteyeBeanService;
 import cn.lcstudio.front.service.UsersService;
 import cn.lcstudio.lucene.Dao.luceneDao;
 import cn.lcstudio.utils.Clawer;
+import cn.lcstudio.utils.computeSemblance;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +16,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -25,17 +26,21 @@ public class Test_Dao {
 	@Autowired
 	private UsersService  usersService;
 	@Test
-	public void TestUser(){
-		Users user=new Users();			
-		user.setPassword("123456");
-		user.setUsername("1");	
-		
-		//usersService.addUser(user);
-		Users uu=usersService.loginUser(user);
-		System.out.println(uu);
-		// usersService.updateUser(user);
-		//System.out.println(u);
-	}
+	public void TestUser() throws IOException, SQLException {
+		IteyeBean it = (IteyeBean) beanService.getListBean(1, false, 5).getList().get(0);
+        List<IteyeBean> list = Clawer.UpdateData();
+        int len=list.size();
+        int i ;
+        for(i=0;i<len;i++){
+            IteyeBean bean=list.get(i);
+            if(computeSemblance.compute(bean.getTitle().trim(),it.getTitle().trim()) > 0.9 ){
+                len=i+1;
+                list.subList(0, i);
+                break;
+            }
+        }
+        System.out.println(i);
+    }
 	
 	@Autowired 
 	private IteyeBeanService beanService;

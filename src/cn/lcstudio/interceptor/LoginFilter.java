@@ -31,22 +31,22 @@ public class LoginFilter implements Filter {
 		HttpServletResponse response=(HttpServletResponse) servletResponse;
 		String path=request.getRequestURI();					
 		System.out.println(path);
-		//Ê×Ò³·ÅÐÐ  paramValue.trim().getBytes("ISO-8859-1")
+		//é¦–é¡µæ”¾è¡Œ  paramValue.trim().getBytes("ISO-8859-1")
 		for(int i=0;i<PassUrl.size();i++){
 			if(path.startsWith(PassUrl.get(i))){ 
 				chain.doFilter(request, response);
 				return;
 			};
 		}
-		//·ÇÊ×Ò³ÑéÖ¤ÊÇ·ñµÇÂ¼
+		//éžé¦–é¡µéªŒè¯æ˜¯å¦ç™»å½•
 		if(request.getSession().getAttribute("user")==null){
-			System.out.println("ÇëµÇÂ¼ÔÙ·ÃÎÊ");		
+			System.out.println("è¯·ç™»å½•å†è®¿é—®");		
 		    response.sendRedirect("/Web/index.do");
 		    return ;
 		}
 		else{
-			System.out.println("µÇÂ¼·ÃÎÊµÄÓÃ»§:" +"  "+request.getRemoteHost()+" ·ÃÎÊ"+path);
-			//logger.info("µÇÂ¼·ÃÎÊµÄÓÃ»§:" +"  "+request.getRemoteHost()+" ·ÃÎÊ"+path);
+			System.out.println("ç™»å½•è®¿é—®çš„ç”¨æˆ·:" +"  "+request.getRemoteHost()+" è®¿é—®"+path);
+			//logger.info("ç™»å½•è®¿é—®çš„ç”¨æˆ·:" +"  "+request.getRemoteHost()+" è®¿é—®"+path);
 			chain.doFilter(request, response);
 		}
 		

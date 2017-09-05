@@ -12,7 +12,7 @@ import java.util.Map;
 
 
 /**
- * 生成静态页实现类
+ * 鐢熸垚闈欐�椤靛疄鐜扮被
  * @author lx
  *
  */
@@ -25,17 +25,17 @@ public class StaticPageServiceImpl implements StaticPageService,ServletContextAw
 	}
 
 
-	//静态化方法
+	//闈欐�鍖栨柟娉�
 	public void productIndex(Map<String,Object> root,Integer id){
 		//String dir = "C:\Users\lx\workspace\babasport12\";
-		//设置模板的目录
+		//璁剧疆妯℃澘鐨勭洰褰�
 		//conf.setDirectoryForTemplateLoading(dir);		
-		//输出流   从内存写出去  磁盘上
+		//杈撳嚭娴�  浠庡唴瀛樺啓鍑哄幓  纾佺洏涓�
 		Writer out = null;
 		try {
-			//读进来  UTF-8  内存中
+			//璇昏繘鏉� UTF-8  鍐呭瓨涓�
 			Template template = conf.getTemplate("ShowArticle.html");
-			//获取Html的路径
+			//鑾峰彇Html鐨勮矾寰�
 			String path = getPath("/html/" + id );//278.html
 			System.out.println(path);
 			File f = new File(path);
@@ -43,9 +43,9 @@ public class StaticPageServiceImpl implements StaticPageService,ServletContextAw
 			if(!parentFile.exists()){
 				parentFile.mkdirs();
 			}
-			//输出流
+			//杈撳嚭娴�
 			out = new OutputStreamWriter(new FileOutputStream(f), "UTF-8");
-			//处理模板
+			//澶勭悊妯℃澘
 			template.process(root, out);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -61,7 +61,7 @@ public class StaticPageServiceImpl implements StaticPageService,ServletContextAw
 			}
 		}
 	}
-	//获取路径
+	//鑾峰彇璺緞
 	public String getPath(String name){
 		return servletContext.getRealPath(name);
 	}

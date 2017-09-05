@@ -52,7 +52,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
         <li class="active"><a href="../index.do"><span class="glyphicon glyphicon-home">&nbsp;数据中心</span></a></li>
-        <li><a href="http://www.lc-studio.cn/blog"><span class="glyphicon glyphicon-eye-open">&nbsp;博客</span></a></li>
+        <li><a href="http://blog.lc-studio.cn"><span class="glyphicon glyphicon-eye-open">&nbsp;博客</span></a></li>
         <li><a href="../index/files.do"><span class="glyphicon glyphicon-cloud-download">&nbsp;文件下载</span></a></li>
        <li><a href="../index/articles.do"><span class=" glyphicon glyphicon-book">&nbsp;所有文章</span></a></li>
         <li class="dropdown">

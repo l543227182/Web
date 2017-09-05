@@ -11,6 +11,7 @@
  */
 package com.ckfinder.connector;
 
+import javax.servlet.*;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,7 +32,7 @@ public class FileUploadFilter implements Filter {
 	private FilterConfig config = null;
 
 	public void doFilter(ServletRequest request, ServletResponse response,
-			FilterChain filterChain) throws IOException, ServletException {
+						 FilterChain filterChain) throws IOException, ServletException {
 		if ("LoadCookies".equalsIgnoreCase(request.getParameter("command"))) {
 			request.setAttribute("session.cookie.name", getSessionCookieName());
 			request.setAttribute("session.parameter.name", getSessionParameterName());

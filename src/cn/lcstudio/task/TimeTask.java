@@ -40,26 +40,26 @@ public class TimeTask  implements Job{
 
 	public void addIteye(){
 		try {			
-			List<IteyeBean> list=(List<IteyeBean>) Clawer.UpdateData();	
-			IteyeBean it=(IteyeBean) beanService.getListBean(1, false, 2).getList().get(0);
-			int len=list.size();
-			for(int i=0;i<len;i++){
-				IteyeBean bean=list.get(i);				
-				if(computeSemblance.compute(bean.getTitle().trim(),it.getTitle().trim()) < 0.9 ){
-					len=i+1;
-					list.subList(0, i);
-					break;
+			List<IteyeBean> list=(List<IteyeBean>) Clawer.UpdateData();
+			List<IteyeBean> dblist = (List<IteyeBean>) beanService.getListBean(1, false, 5).getList();
+			for(int j=0;j<dblist.size();j++) {
+				for (int i = 0; i < list.size(); i++) {
+					IteyeBean bean = list.get(i);
+					if (computeSemblance.compute(bean.getTitle().trim(), dblist.get(j).getTitle().trim()) > 0.9) {
+						list.remove(i);
+					}
 				}
-				 beanService.addBean(bean);
-				 
-				 Map<String, Object> map=new HashMap<String, Object>();
-				 map.put("bean", bean);
-				 pageService.productIndex(map,bean.getId());
-				 dao.addObject(bean);
-				 				
+			}
+			for(int i=0;i<list.size();i++){
+				IteyeBean bean = list.get(i);
+				beanService.addBean(bean);
+				Map<String, Object> map = new HashMap<String, Object>();
+				map.put("bean", bean);
+				pageService.productIndex(map, bean.getId());
+				dao.addObject(bean);
 			}
 			System.out.println(list.size());
-			logger.info("娣诲姞鏁版嵁涓暟:"+"   "+(len));
+			logger.info("爬取数据:"+"   "+(list.size()));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

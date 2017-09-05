@@ -25,7 +25,6 @@ public class FileUtils {
 	
 	public static  void SplitFileName(FileInfo fileInfo) {
 		String filename = fileInfo.getFilename();
-		System.out.println(filename);
 		String name = filename.split("_")[0];
 		String extend=filename.substring(filename.indexOf("."));
 		fileInfo.setFilename(name+extend);

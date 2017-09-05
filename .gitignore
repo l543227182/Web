@@ -4,3 +4,4 @@
 out/
 .idea/
 WebRoot/WEB-INF/classes
+*.class
