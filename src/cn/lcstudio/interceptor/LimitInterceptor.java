@@ -48,13 +48,12 @@ public class LimitInterceptor implements HandlerInterceptor{
 		    	   //如果请求url 包含requestmapping中的value 表示请求的就是这个用户
 				  if(path.contains(value)){
 					  //在session中得到登陆的用户
-					  Users u=(Users) request.getSession().getAttribute("user");
+			 		  Users u=(Users) request.getSession().getAttribute("user");
 					
 					  //为空表示还没有登录， 放行
 					  if(u==null){
 						  return true;
 					  }
-									 
 					  long pid=u.getPID();
 					  //操作权限值 与 当前用户角色的权限值  与操作 如果结果等于操作权限值表示用户有权限访问 
 					  //如果不相等 表示无权限访问 
@@ -78,8 +77,6 @@ public class LimitInterceptor implements HandlerInterceptor{
 		    	}
     		}
    	}
-	
-		
 		return true;
 		
 }

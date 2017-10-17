@@ -118,7 +118,7 @@
 	        </div>        
       	
 			</caption>
-		   
+		   <input type="hidden" name="pageNo" value="${p.pageNo}"/>
 		   <thead>
 		      <tr>
 		      	<th>

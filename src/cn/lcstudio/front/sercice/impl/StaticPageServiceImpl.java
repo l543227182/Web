@@ -13,7 +13,7 @@ import java.util.Map;
 
 /**
  * 鐢熸垚闈欐�椤靛疄鐜扮被
- * @author lx
+ * @author lc
  *
  */
 public class StaticPageServiceImpl implements StaticPageService,ServletContextAware{

@@ -5,7 +5,7 @@ package cn.lcstudio.utils;
  */
 public class computeSemblance {
     public static void main(String args[]){
-        System.out.println(compute("考困境3123123","123考困境3123123"));
+        System.out.println(compute("宜信正式开源其AIOps落地三大利器","宜信正式开源其AIOps落地三大利器"));
     }
     public static float compute(String str1,String str2) {
         int len1 = str1.length();

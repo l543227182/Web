@@ -43,8 +43,7 @@ public class LoginFilter implements Filter {
 			System.out.println("请登录再访问");		
 		    response.sendRedirect("/Web/index.do");
 		    return ;
-		}
-		else{
+		} else{
 			System.out.println("登录访问的用户:" +"  "+request.getRemoteHost()+" 访问"+path);
 			//logger.info("登录访问的用户:" +"  "+request.getRemoteHost()+" 访问"+path);
 			chain.doFilter(request, response);
