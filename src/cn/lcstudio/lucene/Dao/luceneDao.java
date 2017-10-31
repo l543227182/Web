@@ -1,6 +1,8 @@
 package cn.lcstudio.lucene.Dao;
 
 import cn.lcstudio.bean.IteyeBean;
+import cn.lcstudio.front.mapper.IteyeBeanDao;
+import cn.lcstudio.lucene.utils.Contants;
 import cn.lcstudio.lucene.utils.luceneUtils;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.IndexWriter;
@@ -11,8 +13,10 @@ import org.apache.lucene.search.Query;
 import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.search.highlight.Highlighter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,13 +24,39 @@ import java.util.List;
 @Service
 public class luceneDao {
 
+    @Autowired
+    private IteyeBeanDao beanDao;
+
 	public void addObject(IteyeBean bean) throws IOException{
 		IndexWriter iw=luceneUtils.getIndexWriter();
 		iw.addDocument(luceneUtils.toDocument(bean));
 		iw.close();
 	}
 
-	public void delObject(String[] ids){
+	public void luceneClear(){
+        File file = new File(Contants.INDEXURL);
+        if(file.exists()){
+            file.delete();
+        }
+    }
+
+    /**
+     * 重写添加所有的iteyeBean
+     */
+    public void addIteyeBeans(){
+        List<IteyeBean> beans=beanDao.getAllBean();
+        int len=beans.size();
+        for(int i=0;i<len;i++){
+            try {
+                addObject(beans.get(i));
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void delObject(String[] ids){
         try {
             IndexWriter indexWriter = luceneUtils.getIndexWriter();
             for(int i=0;i<ids.length;i++){
@@ -58,9 +88,7 @@ public class luceneDao {
 				// 锟斤拷锟斤拷
 				luceneUtils.highlight(doc, "title", highlighter);
 				luceneUtils.highlight(doc, "summary", highlighter);
-				
 				IteyeBean ib = luceneUtils.DocToIteyeBean(doc);
-				
 				resultList.add(ib);
 			}
 			return resultList;

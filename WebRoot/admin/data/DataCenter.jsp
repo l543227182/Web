@@ -56,16 +56,13 @@
 	  window.location.href="DataCenter.do?pageNo="+$pageNO;
   }
   
-  function searchButton(){
-	 $val= $("#SearchText").val();
-	 if(isNull($val)){
-		 alert("请输入关键字");
-		 return ;
-	 }	
+  function removeDuplicateData(){
 	//window.location.href="SearchFile.do?keyWord="+$val;
-	$form=$("form").prepend($("#SearchText"));
-	$form.attr("action","SearchFiles.do");
-	$form.attr("method","post").submit(); 
+      if(!confirm("确认去重?!")){
+          return;
+      }
+      $("#deleteArticleForm").attr("action","removeDuplicateBean.do");
+      $("#deleteArticleForm").attr("method","post").submit();
   }
 </script>  
   </head>
@@ -109,14 +106,14 @@
 		     <caption>
 	
 			<div style="float: right; margin-left: 18px">
-	        <button class="btn btn-default"  onclick="searchButton()">文章搜索</button>
+	        <button class="btn btn-default"  onclick="removeDuplicateData()">数据去重</button>
 	        </div>
-	        <div class="form-group" style="float: right;">
+	  <%--      <div class="form-group" style="float: right;">
 		     
 		          <input type="text"  id="SearchText" class="form-control" placeholder="关键字"  name="keyWord" style="width: 120px">
 		       
 	        </div>        
-      	
+      	--%>
 			</caption>
 		   <input type="hidden" name="pageNo" value="${p.pageNo}"/>
 		   <thead>

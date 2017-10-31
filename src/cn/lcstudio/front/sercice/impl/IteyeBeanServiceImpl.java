@@ -5,15 +5,20 @@ import cn.lcstudio.bean.IteyeBean;
 import cn.lcstudio.front.mapper.IteyeBeanDao;
 import cn.lcstudio.front.service.IteyeBeanService;
 import cn.lcstudio.lucene.Dao.luceneDao;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.io.File;
+import java.util.List;
 
 @Service
 public class IteyeBeanServiceImpl implements IteyeBeanService{
 
-	@Autowired
+    private static Logger logger = Logger.getLogger(IteyeBeanServiceImpl.class);
+
+    @Autowired
 	private luceneDao luceneDao;
 	@Resource
 	private IteyeBeanDao beanDao;
@@ -30,6 +35,15 @@ public class IteyeBeanServiceImpl implements IteyeBeanService{
 		// TODO Auto-generated method stub
 		beanDao.delBeans(ids);
         luceneDao.delObject(ids);
+
+        //删除相应的html
+		for(int i=0;i<ids.length;i++){
+		    File file =new File("/html/" + ids[i]);
+		    if(file.exists()){
+                logger.info("delete duplicate IteyeBean ,its id is" + ids[i]);
+		        file.delete();
+            }
+        }
 	}
 
 	@Override
@@ -62,6 +76,8 @@ public class IteyeBeanServiceImpl implements IteyeBeanService{
 		return beanDao.getAllID();
 	}
 
-	
-
+	@Override
+	public List<IteyeBean> getAll() {
+		return beanDao.getAllBean();
+	}
 }

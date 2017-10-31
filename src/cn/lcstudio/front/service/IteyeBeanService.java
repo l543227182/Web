@@ -3,6 +3,8 @@ package cn.lcstudio.front.service;
 import cn.itcast.common.page.Pagination;
 import cn.lcstudio.bean.IteyeBean;
 
+import java.util.List;
+
 public interface IteyeBeanService {
 	public int addBean(IteyeBean bean);
 	public void delBean(String[] id);
