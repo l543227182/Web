@@ -1,7 +1,6 @@
 package cn.lcstudio.test;
 
 import cn.lcstudio.bean.IteyeBean;
-import cn.lcstudio.bean.UserArticle;
 import cn.lcstudio.front.mapper.IteyeBeanDao;
 import cn.lcstudio.front.mapper.UserArticleDao;
 import cn.lcstudio.front.service.IteyeBeanService;
@@ -15,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.io.IOException;
+import java.io.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -114,8 +113,42 @@ public class Test_Dao {
 	@Autowired
 	private UserArticleDao articleDao;
 	@Test
-	public void Test(){
-		UserArticle ua = articleDao.getUA();
-		System.out.println(ua.getList().size());
+	public void Test() throws Exception {
+		File file =new File("./");
+        System.out.println(file.getAbsolutePath());
+		System.out.println(getCountline(file));
+	}
+	public int getCountline(File file) throws Exception {
+
+	    int count = 0;
+		if(file.isDirectory()){
+            File[] files = file.listFiles();
+            if (files != null)
+                for (int i = 0; i < files.length; i++) {
+                    count += getCountline(files[i]);
+                }
+        }else{
+            String name = file.getName();
+            if(name.endsWith(".java") || name.endsWith(".jsp") || name.endsWith(".xml")){
+                System.out.print(file.getName() + "  ");
+                BufferedReader br=new BufferedReader(new FileReader(file));
+                String i = "";
+                while ((i = br.readLine()) != null) {
+                    if (isBlankLine(i))
+                        count++;
+                }
+            }else{
+                return 0;
+            }
+		}
+		return count;
+	}
+	//是否是空行
+	public boolean isBlankLine(String i) {
+		if (i.trim().length() == 0) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 }

@@ -42,7 +42,7 @@ public class TimeTask implements Job {
     public void addIteye() {
         try {
             List<IteyeBean> list = (List<IteyeBean>) Clawer.UpdateData();
-            List<IteyeBean> dblist = (List<IteyeBean>) beanService.getListBean(1, false, 5).getList();
+            List<IteyeBean> dblist = (List<IteyeBean>) beanService.getListBean(1, false, 40).getList();
             for (int j = 0; j < dblist.size(); j++) {
                 for (int i = 0; i < list.size(); i++) {
                     IteyeBean bean = list.get(i);
@@ -51,7 +51,7 @@ public class TimeTask implements Job {
                     }
                 }
             }
-            for (int i = 0; i < list.size(); i++) {
+           for (int i = 0; i < list.size(); i++) {
                 IteyeBean bean = list.get(i);
                 beanService.addBean(bean);
                 Map<String, Object> map = new HashMap<String, Object>();

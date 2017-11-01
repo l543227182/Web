@@ -36,10 +36,22 @@ public class luceneDao {
 	public void luceneClear(){
         File file = new File(Contants.INDEXURL);
         if(file.exists()){
-            file.delete();
+            deleteAllFilesOfDir(file);
         }
     }
-
+    public static void deleteAllFilesOfDir(File path) {
+        if (!path.exists())
+            return;
+        if (path.isFile()) {
+            path.delete();
+            return;
+        }
+        File[] files = path.listFiles();
+        for (int i = 0; i < files.length; i++) {
+            deleteAllFilesOfDir(files[i]);
+        }
+        path.delete();
+    }
     /**
      * 重写添加所有的iteyeBean
      */

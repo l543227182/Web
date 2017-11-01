@@ -5,3 +5,5 @@ out/
 .idea/
 WebRoot/WEB-INF/classes
 *.class
+*.class
+WebRoot/WEB-INF/classes/cn/lcstudio/lucene/Dao/luceneDao.class

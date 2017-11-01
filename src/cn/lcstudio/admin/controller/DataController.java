@@ -58,7 +58,6 @@ public class DataController {
         }catch (Exception e){
             logger.info("重新发布失败 原因：" + e.getMessage());
         }
-
 		return "redirect:DataCenter.do";
 	}
 	@RequestMapping("/DataCenter")
